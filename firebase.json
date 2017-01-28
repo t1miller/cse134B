@@ -3,6 +3,5 @@
     "rules": "database.rules.json"
   },
   "hosting": {
-    "public": "public"
-  }
+    "public": "public"  }
 }
