@@ -7,13 +7,12 @@ body {
 
 
 main {
-    background-color: #7ec0ee;
+    background-color: #7ec0ee; /* sky blue */
     text-align: center;
     padding-left: 20px;
     padding-right: 20px;
-    border-right: 3px solid black;
-    border-left: 3px solid black;
-
+    border-right: 2px solid black;
+    border-left: 2px solid black;
 }
 
 #OverDexBanner {
@@ -25,23 +24,43 @@ main {
     text-align: center;
     border: 3px solid black;
     border-radius: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    background-color: white;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #e5e5e5; /* grey */
+}
+
+.hero-card > * {
+    background-color: #fbe1b1; /* orange */
+    margin: 2px;
+    border: 2px solid black;
+    text-align: left;
+    display: inline-block;
+    vertical-align: top;
+    width: 30%;
+    height: 200px;
+    font-family: Arial, helvetica, sans-serif;
+    border-radius: 10px;
 }
 
 .hero-portrait {
     margin: 2px;
-    border: 3px solid black;
+    border: 2px solid black;
     display: inline-block;
-    vertical-align: top;
+    text-align: center;
+    vertical-align: middle;
     width: 30%;
     height: 200px;
     border-radius: 10px;
 }
 
+.hero-image {
+    height: 95%;
+    vertical-align: middle;
+}
+
+/*
 .static-info {    
     margin: 2px;
     border: 3px solid black;
@@ -65,6 +84,7 @@ main {
     font-family: Arial, helvetica, sans-serif;
     border-radius: 10px;
 }
+*/
 
 .update-stats {
     text-align: center;
