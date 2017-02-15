@@ -1,0 +1,76 @@
+body {
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+
+main {
+    background-color: #7ec0ee;
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-right: 3px solid black;
+    border-left: 3px solid black;
+
+}
+
+#OverDexBanner {
+    width: 100%;
+    border: 1px solid black;
+}
+
+.hero-card {
+    text-align: center;
+    border: 3px solid black;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: white;
+}
+
+.hero-portrait {
+    margin: 2px;
+    border: 3px solid black;
+    display: inline-block;
+    vertical-align: top;
+    width: 30%;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.static-info {    
+    margin: 2px;
+    border: 3px solid black;
+    text-align: left;
+    display: inline-block;
+    vertical-align: top;
+    width: 30%;
+    height: 200px;
+    font-family: Arial, helvetica, sans-serif;
+    border-radius: 10px;
+}
+
+.dynamic-info {    
+    margin: 2px;
+    border: 3px solid black;
+    text-align: left;
+    display: inline-block;   
+    vertical-align: top;
+    width: 30%;
+    height: 200px;
+    font-family: Arial, helvetica, sans-serif;
+    border-radius: 10px;
+}
+
+.update-stats {
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+}
+
