@@ -4,17 +4,25 @@
 	<title>Register</title>
 	<meta charset="UTF-8">
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="signin.css" rel="stylesheet">
+
 <body>
-	<main>
-	    <img id="OverDexBanner" src="Overwatch-Banner.png" alt="OverDex Banner">
-		<h1>Register</h1> 
-		<form id="register-form">
-			<input id="username-field" type="text" name="username" placeholder="Username">
-			<input id="password-field" type="text" name="password" placeholder="Password">
-			<input id="confirm-password-field" type="text" name="confirm-password" placeholder="Confirm Password">
-			<input id="register-button" type="submit" value="Register">
-		</form>
-	</main>
+	<img id="OverDexBanner" src="Overwatch-Banner.png" alt="OverDex Banner">
+    <div class="container">
+      <form class="form-signin">
+        <h2 class="form-signin-heading">Please register</h2>
+        <label for="inputEmail" class="sr-only">Username</label>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Username" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        
+        <label for="inputConfirmPassword" class="sr-only">Confirm Password</label>
+        <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Confirm Password" required>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </form>
+
+    </div> <!-- /container -->
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"<</script>
     <script src="js/bootstrap.min.js"></script>
