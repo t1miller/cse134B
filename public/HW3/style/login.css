@@ -1,12 +1,16 @@
-body{
-	background-color: #E8E8E8;/*light grey*/
-	margin: 0;
-    padding: 0;
+body {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: Arial, helvetica, sans-serif;
+    background-color: #e5efff; /* light blue */
+    color: #565353; /* dark grey */
 }
 
 h1{
 	text-align: center;
 }
+
 
 form {
 	margin-left: auto;
