@@ -8,21 +8,25 @@
 <body>
     
     <main>
-        <img id="OverDexBanner" src="OverDex Banner.png" alt="blah.com">
-        <form action="login.html">
-            <input type="submit" value="Logout">
-        </form>
-        <form>
-            <input type="radio" name="sort" value="alphabetical">Sort Alphabetical
-            <input type="radio" name="sort" value="winrate">Sort Win-rate
-            <input type="radio" name="sort" value="playtime">Sort Play-time
-            <input type="radio" name="sort" value="eliminations">Sort Eliminations
-        </form>
+        <img id="OverDexBanner" src="OverDex Banner.png" alt="OverDex Banner">
+        <div id="nav">
+            <form>
+                <div id="sort-radio">
+                    <input type="radio" name="sort" value="alphabetical">Sort Alphabetical
+                    <input type="radio" name="sort" value="winrate">Sort Win-rate
+                    <input type="radio" name="sort" value="playtime">Sort Play-time
+                    <input type="radio" name="sort" value="eliminations">Sort Eliminations
+                </div>
+            </form>
+            <form id="logout-btn" action="login.html">
+                <input type="submit" value="Logout">
+            </form>
+        </div>
         <div class="hero-card">
             <div class="hero-portrait">
-                <img class="hero-image" src="MeiPortrait.png" alt="Mei Portrait">
+                <img src="HeroPortraits/MeiPortrait.png" alt="Mei Portrait">
             </div>
-            <div class="static-info">
+            <div class="background-info">
                 <ul>
                     <li>Name:</li>
                     <li>Origin:</li>
@@ -32,7 +36,7 @@
                     <li>Member of Overwatch:</li>
                 </ul>
             </div>
-            <div class="dynamic-info">
+            <div class="user-stats">
                 <ul>
                     <li>Wins:</li>
                     <li>Losses:</li>
@@ -50,9 +54,9 @@
         </div>
         <div class="hero-card">
             <div class="hero-portrait">
-                <img src="WinstonPortrait.png" alt="blah.com">
+                <img src="HeroPortraits/WinstonPortrait.png" alt="Winston Portrait">
             </div>
-            <div class="static-info">
+            <div class="background-info">
                 <ul>
                     <li>Name:</li>
                     <li>Origin:</li>
@@ -62,7 +66,7 @@
                     <li>Member of Overwatch:</li>
                 </ul>
             </div>
-            <div class="dynamic-info">
+            <div class="user-stats">
                 <ul>
                     <li>Wins:</li>
                     <li>Losses:</li>
@@ -80,9 +84,9 @@
         </div>
         <div class="hero-card">
             <div class="hero-portrait">
-                <img src="ZenyattaPortrait.png" alt="blah.com">
+                <img src="HeroPortraits/MccreePortrait.png" alt="Mccree Portrait">
             </div>
-            <div class="static-info">
+            <div class="background-info">
                 <ul>
                     <li>Name:</li>
                     <li>Origin:</li>
@@ -92,7 +96,97 @@
                     <li>Member of Overwatch:</li>
                 </ul>
             </div>
-            <div class="dynamic-info">
+            <div class="user-stats">
+                <ul>
+                    <li>Wins:</li>
+                    <li>Losses:</li>
+                    <li>Win-rate:</li>
+                    <li>Role:</li>
+                    <li>Time Played:</li>
+                    <li>Eliminations:</li>
+                    <li>Deaths:</li>
+                    <li>Eliminations/Death:</li>
+                </ul>
+                <form class="update-stats" action="session_tracker.html">
+                    <input type="submit" value="Edit">
+                </form>
+            </div>
+        </div>
+        <div class="hero-card">
+            <div class="hero-portrait">
+                <img src="HeroPortraits/MercyPortrait.png" alt="Mercy Portrait">
+            </div>
+            <div class="background-info">
+                <ul>
+                    <li>Name:</li>
+                    <li>Origin:</li>
+                    <li>Role:</li>
+                    <li>Health:</li>
+                    <li>Ultimate:</li>
+                    <li>Member of Overwatch:</li>
+                </ul>
+            </div>
+            <div class="user-stats">
+                <ul>
+                    <li>Wins:</li>
+                    <li>Losses:</li>
+                    <li>Win-rate:</li>
+                    <li>Role:</li>
+                    <li>Time Played:</li>
+                    <li>Eliminations:</li>
+                    <li>Deaths:</li>
+                    <li>Eliminations/Death:</li>
+                </ul>
+                <form class="update-stats" action="session_tracker.html">
+                    <input type="submit" value="Edit">
+                </form>
+            </div>
+        </div>
+        <div class="hero-card">
+            <div class="hero-portrait">
+                <img src="HeroPortraits/HanzoPortrait.png" alt="Hanzo Portrait">
+            </div>
+            <div class="background-info">
+                <ul>
+                    <li>Name:</li>
+                    <li>Origin:</li>
+                    <li>Role:</li>
+                    <li>Health:</li>
+                    <li>Ultimate:</li>
+                    <li>Member of Overwatch:</li>
+                </ul>
+            </div>
+            <div class="user-stats">
+                <ul>
+                    <li>Wins:</li>
+                    <li>Losses:</li>
+                    <li>Win-rate:</li>
+                    <li>Role:</li>
+                    <li>Time Played:</li>
+                    <li>Eliminations:</li>
+                    <li>Deaths:</li>
+                    <li>Eliminations/Death:</li>
+                </ul>
+                <form class="update-stats" action="session_tracker.html">
+                    <input type="submit" value="Edit">
+                </form>
+            </div>
+        </div>
+        <div class="hero-card">
+            <div class="hero-portrait">
+                <img src="HeroPortraits/ZenyattaPortrait.png" alt="Zenyatta Portrait">
+            </div>
+            <div class="background-info">
+                <ul>
+                    <li>Name:</li>
+                    <li>Origin:</li>
+                    <li>Role:</li>
+                    <li>Health:</li>
+                    <li>Ultimate:</li>
+                    <li>Member of Overwatch:</li>
+                </ul>
+            </div>
+            <div class="user-stats">
                 <ul>
                     <li>Wins:</li>
                     <li>Losses:</li>
