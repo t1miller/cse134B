@@ -1,0 +1,41 @@
+@font-face {
+    font-family: 'BigNoodleToo';
+    src: url(bignoodletoo.ttf);
+}
+
+body {
+    font-family: Arial, helvetica, sans-serif;
+    /*background-color: #277fe1; *//* royal blue */    
+    background-color: #a3c6ff; /* light blue */
+    color: #565353; /* dark grey */
+}
+
+.left-margin {
+    background-color: #e5ffe7; 
+}
+
+.hero-card {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px black;
+    background-color: #ffdc9a; /* orange */
+
+}
+
+.title {
+    text-align: center;
+}
+
+.update-stats {
+    text-align: center;
+    padding: 2px;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+
+
