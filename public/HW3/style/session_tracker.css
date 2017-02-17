@@ -1,0 +1,12 @@
+body {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: Arial, helvetica, sans-serif;
+    background-color: #e5efff; /* light blue */
+    color: #565353; /* dark grey */
+}
+
+
+#login-form {
+	margin: 10px;
+}
