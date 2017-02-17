@@ -1,0 +1,18 @@
+body {
+  margin-top: 2px;
+  background-color: #eee;
+  text-align: center;
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card {
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  background-color: #ffdc9a; /* orange */
+  margin: 2px;
+}
