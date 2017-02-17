@@ -9,7 +9,7 @@ body {
     margin-bottom: 0;
     font-family: Arial, helvetica, sans-serif;
     /*background-color: #277fe1; *//* royal blue */    
-    background-color: #e5ffe7; /* light blue */
+    background-color: #a3c6ff; /* light blue */
     color: #565353; /* dark grey */
 }
 
@@ -17,13 +17,16 @@ body {
 main {
     display: block;
     margin: auto;
+    /*
     border-right: 2px solid black;
     border-left: 2px solid black;
+    */
     padding-left: 30px;
     padding-right: 30px;
     padding-top: 5px;
     padding-bottom: 5px;
-    width: 750px;
+    max-width: 750px;
+    width: 75%;
     text-align: center;
     background-color: #a3c6ff; 
 }
@@ -81,6 +84,11 @@ main {
     display: inline-block;
     text-align: center;
     vertical-align: middle;
+}
+
+.hero-image {
+    max-width: 200px;
+    width: 100%;
 }
 
 .title {
