@@ -3,60 +3,17 @@
 <head>
 	<title>Session Tracker</title>
 	<meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style/session_tracker.css">
 </head>
 <body>
-
-	<img src="example.com" alt="blah.com"><!--banner image-->
-    <nav>
-    <a href="index.html">Main</a>
-    </nav>
-	<h1>Session Tracker</h1>
-	<div>
-        <img src="example.com" alt="blah.com">
-        <ul>
-            <li>Games Won: 3</li>
-            <li>Games Lost: 0</li>
-            <li>Playtime: 3hrs</li>
-        </ul>
-        <ul>
-            <li>Eliminations: 90</li>
-            <li>Deaths: 20</li>
-            <li>Date: 1/20/2017</li>
-        </ul>
-    </div>
-    <div>
-        <img src="example.com" alt="blah.com">
-        <ul>
-            <li>Games Won: 3</li>
-            <li>Games Lost: 0</li>
-            <li>Playtime: 3hrs</li>
-        </ul>
-        <ul>
-            <li>Eliminations: 90</li>
-            <li>Deaths: 20</li>
-            <li>Date: 1/20/2017</li>
-        </ul>
-    </div>
-    <div>
-        <img src="example.com" alt="blah.com">
-        <ul>
-            <li>Games Won: 3</li>
-            <li>Games Lost: 0</li>
-            <li>Playtime: 3hrs</li>
-        </ul>
-        <ul>
-            <li>Eliminations: 90</li>
-            <li>Deaths: 20</li>
-            <li>Date: 1/20/2017</li>
-        </ul>
-    </div>
-	<form>
-		Games Won<input type="text" name="games_won">
-		Games Lost<input type="text" name="games_lost">
-		Playtime<input type="text" name="playtime">
-		Eliminations<input type="text" name="elimintions">
-		Deaths<input type="text" name="deaths">
-		<input type="submit" value="+">
+    <form id="login-form">
+        <input id="games-won" type="number" name="games-won" placeholder="Games Won">
+        <input id="games-lost" type="number" name="games-lost" placeholder="Games Lost">
+        <input id="playtime" type="number" name="playtime" placeholder="Playtime">
+        <input id="eliminations" type="number" name="eliminations" placeholder="eliminations">
+        <input id="deaths" type="number" name="deaths" placeholder="deaths">
+        <input type="submit" value="+">
 	</form>
+    <p>*This will be implemented in JS and will be part of the card in index.html</p>
 </body>
 </html>
