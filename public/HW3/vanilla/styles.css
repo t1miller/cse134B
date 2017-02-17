@@ -8,7 +8,6 @@ body {
     margin-top: 0;
     margin-bottom: 0;
     font-family: Arial, helvetica, sans-serif;
-    /*background-color: #277fe1; *//* royal blue */    
     background-color: #a3c6ff; /* light blue */
     color: #565353; /* dark grey */
 }
@@ -17,17 +16,12 @@ body {
 main {
     display: block;
     margin: auto;
-    /*
-    border-right: 2px solid black;
-    border-left: 2px solid black;
-    */
     padding-left: 30px;
     padding-right: 30px;
     padding-top: 5px;
     padding-bottom: 5px;
     width: 800px;
     text-align: center;
-    background-color: #a3c6ff; 
 }
 
 @media (max-width: 900px) {
@@ -43,7 +37,6 @@ main {
     }
 }
 
-
 @media (max-width: 700px) {
     main {
         padding: 0;
@@ -51,12 +44,10 @@ main {
     }
 }
 
-
 #OverDexBanner {
     width: 100%;
     border: 1px solid black;
 }
-
 
 @media (max-width: 700px) {
     #OverDexBanner {
@@ -66,14 +57,11 @@ main {
     }
 }
 
-
 #nav {
     height: 30px;
     line-height: 30px;
     color: black;
 }
-
-
 
 #sort-radio {
     display: inline-block;
@@ -103,15 +91,12 @@ main {
     }
 }
 
-
-
 .hero-card {
     text-align: center;
     margin-top: 7px;
     margin-bottom: 7px;
     padding-top: 10px;
     padding-bottom: 10px;
-    /*border: 2px solid black;*/
     border-radius: 10px;
     box-shadow: 0 2px 5px black;
     background-color: #ffdc9a; /* orange */
@@ -151,7 +136,6 @@ main {
     vertical-align: middle;
 }
 
-
 @media (max-width: 800px) {
     .hero-card > * {
         height: 160px;
@@ -168,7 +152,6 @@ main {
         font-size: 15px;
     }
 }
-
 
 .hero-portrait {
     margin: 2px;
@@ -208,7 +191,6 @@ main {
 
     }
 }
-
 
 .title {
     text-align: center;
@@ -259,7 +241,9 @@ main {
     box-shadow: 0px 2px 5px #666;
 }
 
-.plus{
+
+
+#plus{
     position: absolute;
     top: 0;
     bottom: 0;
@@ -272,5 +256,17 @@ main {
     line-height: 55px;
     font-size: 38px;
     color: white;
+}
+
+@media (max-width: 700px) {
+    #floating-button {
+        width: 45px;
+        height: 45px;
+        right: 30px;
+    }
+
+    #plus {
+        line-height: 45px;
+    }
 }
 
