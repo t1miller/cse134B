@@ -42,5 +42,11 @@ ul {
     padding-left: 0;
 }
 
+.add-hero {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+}
+
 
 
