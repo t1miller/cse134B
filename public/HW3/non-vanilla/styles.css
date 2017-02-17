@@ -10,8 +10,8 @@ body {
     color: #565353; /* dark grey */
 }
 
-.left-margin {
-    background-color: #e5ffe7; 
+.logout-btn {
+    text-align: right;
 }
 
 .hero-card {
@@ -20,7 +20,12 @@ body {
     border-radius: 10px;
     box-shadow: 0 2px 5px black;
     background-color: #ffdc9a; /* orange */
+}
 
+.hero-image {
+    padding-top: 10px;
+    display: block;
+    margin: auto auto;
 }
 
 .title {
@@ -35,6 +40,10 @@ body {
 ul {
     list-style: none;
     padding-left: 0;
+}
+
+.add-button {
+    z-index: 999;
 }
 
 
