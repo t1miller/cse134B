@@ -25,17 +25,55 @@ main {
     padding-right: 30px;
     padding-top: 5px;
     padding-bottom: 5px;
-    max-width: 750px;
-    width: 75%;
+    width: 800px;
     text-align: center;
     background-color: #a3c6ff; 
 }
+
+@media (max-width: 900px) {
+    main {
+        width: 700px;
+    }
+}
+
+@media (max-width: 800px) {
+    main {
+        font-size: 12px;
+        width: 600px;
+    }
+}
+
+
+@media (max-width: 700px) {
+    main {
+        padding: 0;
+        display: inline;
+    }
+}
+
+
+#OverDexBanner {
+    width: 100%;
+    border: 1px solid black;
+}
+
+
+@media (max-width: 700px) {
+    #OverDexBanner {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+}
+
 
 #nav {
     height: 30px;
     line-height: 30px;
     color: black;
 }
+
+
 
 #sort-radio {
     display: inline-block;
@@ -47,10 +85,25 @@ main {
     float: right;
 }
 
-#OverDexBanner {
-    width: 100%;
-    border: 1px solid black;
+@media (max-width: 500px) {
+    #nav {
+        height: 50px;
+    }
+    #sort-radio {
+        display: inline;
+        text-align: center;
+        float: none;
+        margin: auto;
+    }
+
+    #logout-btn {
+        display: inline;
+        float: none;
+        margin: auto;
+    }
 }
+
+
 
 .hero-card {
     text-align: center;
@@ -62,6 +115,28 @@ main {
     border-radius: 10px;
     box-shadow: 0 2px 5px black;
     background-color: #ffdc9a; /* orange */
+}
+
+@media (max-width: 800px) {
+    .hero-card {
+        height: 180px;
+    }
+}
+
+@media(max-width: 500px) {
+    .hero-card {
+        height: 100%;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+}
+
+@media (max-width: 450px) {
+    .hero-card {
+        width: 100%;
+    }
 }
 
 .hero-card > * {
@@ -76,6 +151,25 @@ main {
     vertical-align: middle;
 }
 
+
+@media (max-width: 800px) {
+    .hero-card > * {
+        height: 160px;
+    }
+}
+
+@media (max-width: 500px) {
+    .hero-card > * {
+        padding: 2px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 60%;
+        display: block;
+        font-size: 15px;
+    }
+}
+
+
 .hero-portrait {
     margin: 2px;
     border: none;
@@ -86,10 +180,35 @@ main {
     vertical-align: middle;
 }
 
+@media (max-width: 500px) {
+    .hero-portrait {
+        width: 100%;
+    }
+
+}
+
 .hero-image {
     max-width: 200px;
     width: 100%;
 }
+
+@media (max-width: 800px) {
+    .hero-image {
+        height: 150px;
+        width: 150px;
+    }
+}
+
+@media (max-width: 500px) {
+    .hero-image {
+        width: 40%;
+        height: 40%;
+        padding: 0;
+        margin: 0;
+
+    }
+}
+
 
 .title {
     text-align: center;
@@ -100,13 +219,32 @@ main {
     font-family: 'BigNoodleToo', Arial;
 }
 
+@media (max-width: 800px) {
+    .title {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 500px) {
+    .title {
+        padding-bottom: 1px;
+    }
+}
+
 .update-stats {
     text-align: center;
 }
 
-ul {
+.list-fields {
     list-style: none;
     padding-left: 0;
+}
+
+@media (max-width: 500px) {
+    .list-fields {
+        padding-top: 0;
+        margin-top: 0;
+    }
 }
 
 #floating-button{
