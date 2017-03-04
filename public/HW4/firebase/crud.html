@@ -54,10 +54,42 @@
 	
 	<script>
 
+
+
 	function heroPortraitLookUp(heroName){
 		baseDir = "HeroPortraits/";
 		return baseDir+heroName+"Portrait.png";
 	}
+
+
+
+	function updateStats() {
+		var updateFormExists = document.getElementById("update-stats-form");
+		if (updateFormExists != null) {
+			return;
+		}
+
+		var updateStatsForm = document.createElement("DIV");
+		updateStatsForm.id = "update-stats-form";
+
+		updateStatsForm.innerHTML = "<form action=\"#\">"+
+                    					"Games Won:"+
+                    					"<input type=\"text\" name=\"gameswon\"><br>"+
+                    					"Games Lost:"+
+					                    "<input type=\"text\" name=\"gameslost\"><br>"+
+					                    "Time Played:"+
+					                    "<input type=\"text\" name=\"timeplayed\"><br>"+
+					                    "Eliminations:"+
+					                    "<input type=\"text\" name=\"eliminations\"><br>"+
+					                    "Deaths:"+
+					                    "<input type=\"text\" name=\"deaths\"><br>"+
+					                    "<input type=\"submit\" value=\"submit-update\">"+
+					                "</form>";
+
+		document.getElementsByClassName("hero-card")[0].appendChild(updateStatsForm);
+	}
+	
+	
 
 	//takes form data and pumps out a template
 	function formToTemplate(formData){
@@ -93,8 +125,8 @@
 				                    "<li>Time Played:</li>" +
 				                    "<li>Eliminations/Death:</li>" +
 			               	     "</ul>" +
-				                 "<form class=\"update-stats\" action=\"session_tracker.html\">"+
-				                    "<input type=\"submit\" value=\"Edit\">" +
+				                 "<form class=\"update-stats\" action=\"#\">"+
+				                    "<input type=\"submit\" value=\"Edit\" onClick=\"updateStats();\">" +
 				                 "</form>";
 		
 		//append all of hero card div's children
