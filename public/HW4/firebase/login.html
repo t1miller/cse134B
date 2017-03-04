@@ -6,14 +6,13 @@
 	<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase-app.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase-auth.js"></script>
-
 	<script>
 	  // Initialize Firebase
 	  // TODO: Replace with your project's customized code snippet
 	  var config = {
 	    apiKey: "AIzaSyDuF_qzwkeOCG9F4_I2eJTVcLxFkHnbdPQ",
 	    authDomain: "overdex-f33ef.firebaseapp.com",
-	    //databaseURL: "https://<DATABASE_NAME>.firebaseio.com",
+	    databaseURL: "https://overdex-f33ef.firebaseio.com/",
 	    storageBucket: "gs://overdex-f33ef.appspot.com",
 	    messagingSenderId: "<SENDER_ID>"
 	  };
@@ -24,7 +23,7 @@
 	<script type="text/javascript">
       // FirebaseUI config.
       var uiConfig = {
-        signInSuccessUrl: '<url-to-redirect-to-on-success>',
+        signInSuccessUrl: "index.html",
         signInOptions: [
           // Leave the lines as is for the providers you want to offer your users.
           firebase.auth.GoogleAuthProvider.PROVIDER_ID,

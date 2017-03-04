@@ -6,6 +6,8 @@
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase-database.js"></script>
 	<script>
 	  // Initialize Firebase
 	  var config = {
@@ -16,9 +18,17 @@
 	    messagingSenderId: "<SENDER_ID>"
 	  };
 	  firebase.initializeApp(config);
+	  firebase.auth().onAuthStateChanged(function(user) {
+		  if (!user){
+		  	window.location.replace("login.html");
+		    // No user is signed in.
+		  }
+	  });
+
 	</script>
 </head>
 <body>
+	<button type="button" id="logout" onclick="logout()">Logout</button>
 	<form action="#" id="addHeroForm">
 	  	<select name="hero">
 		    <option value="Ana">Ana</option>
@@ -44,25 +54,10 @@
 		    <option value="Zarya">Zarya</option>
 		    <option value="Zenyatta">Zenyatta</option>
 	  	</select>
-	  	Wins: <input type="number" name="wins">
-		Losses: <input type="number" name="losses">
-		Time Played(hrs): <input type="number" name="timePlayed">
-		Kills: <input type="number" name="kills">
-	  	Deaths: <input type="number" name="deaths">
-	  	<input type="button" value="+" name="addHeroButton" onclick="addHero();">
+	  	<input type="button" value="+" name="addHeroButton" onclick="addHero()">
 	</form>
 	
 	<script>
-
-
-
-	function heroPortraitLookUp(heroName){
-		baseDir = "HeroPortraits/";
-		return baseDir+heroName+"Portrait.png";
-	}
-
-
-
 	function updateStats() {
 		var updateFormExists = document.getElementById("update-stats-form");
 		if (updateFormExists != null) {
@@ -89,7 +84,18 @@
 		document.getElementsByClassName("hero-card")[0].appendChild(updateStatsForm);
 	}
 	
-	
+	function logout(){
+		firebase.auth().signOut().then(function() {
+			window.location.replace("login.html");
+		}, function(error) {
+		 	console.log("Error logging out");
+		});
+	}
+
+	function heroPortraitLookUp(heroName){
+		baseDir = "HeroPortraits/";
+		return baseDir+heroName+"Portrait.png";
+	}
 
 	//takes form data and pumps out a template
 	function formToTemplate(formData){
@@ -119,8 +125,8 @@
 		userStatsDiv.className = "user-stats";
 		userStatsDiv.innerHTML = "<h3 class=\"title\">Stats</h3>"+
             					 "<ul class=\"list-fields\">"+
-                    				"<li>Wins:"+formData["wins"]+"</li>" +
-                    				"<li>Losses:"+formData["losses"]+"</li>" +
+                    				"<li>Wins:</li>" +
+                    				"<li>Losses:</li>" +
 				                    "<li>Win-rate:</li>" +
 				                    "<li>Time Played:</li>" +
 				                    "<li>Eliminations/Death:</li>" +
@@ -140,22 +146,37 @@
 	//extract form data 
 	function addHero() {
 		var dict = {};
-		dict["wins"] = document.getElementById("addHeroForm").elements["wins"].value;
-		dict["losses"] = document.getElementById("addHeroForm").elements["losses"].value;
-		dict["timePlayed"] = document.getElementById("addHeroForm").elements["timePlayed"].value;
-		dict["kills"] = document.getElementById("addHeroForm").elements["kills"].value;
-		dict["deaths"] = document.getElementById("addHeroForm").elements["deaths"].value;
 		dict["hero"] = document.getElementById("addHeroForm").elements["hero"].value;
 
 		//error checking
-		if(dict["wins"] == "" || dict["losses"] == "" || dict["timePlayed"] == "" || dict["kills"] == "" 
-			|| dict["deaths"] == "" || dict["hero"] == "" ){
+		if(dict["hero"] == "" ){
 			alert("Please fill out all form fields");
 			return;
 		}
 
+		var user = firebase.auth().currentUser;
+		addHeroDB(user.uid,dict["hero"]);
+
 		formToTemplate(dict)
 	}
+	
+	function addHeroDB(user, hero) {
+	  // A post entry.
+	  var postData = {
+	    "wins": 0,
+	    "losses": 0,
+	    "timePlayed": 0,
+	    "eliminations": 0,
+	    "deaths": 0
+	  };
+
+	  // Write the new post's data simultaneously in the posts list and the user's post list.
+	  var updates = {};
+	  updates['/users/' + user + "/favorites/" + hero] = postData;
+	  return firebase.database().ref().update(updates);
+	}
+	
+
 	</script>
 
 </body>
