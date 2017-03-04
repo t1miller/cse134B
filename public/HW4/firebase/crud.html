@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Selection</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase-app.js"></script>
+	<script>
+	  // Initialize Firebase
+	  var config = {
+	    apiKey: "AIzaSyDuF_qzwkeOCG9F4_I2eJTVcLxFkHnbdPQ",
+	    authDomain: "overdex-f33ef.firebaseapp.com",
+	    databaseURL: "https://overdex-f33ef.firebaseio.com/",
+	    storageBucket: "gs://overdex-f33ef.appspot.com",
+	    messagingSenderId: "<SENDER_ID>"
+	  };
+	  firebase.initializeApp(config);
+	</script>
+</head>
+<body>
+	<form action="#" id="addHeroForm">
+	  	<select name="hero">
+		    <option value="Ana">Ana</option>
+		    <option value="Bastion">Bastion</option>
+		    <option value="DVa">DVa</option>
+		    <option value="Genji">Genji</option>
+		    <option value="Hanzo">Hanzo</option>
+		    <option value="Junkrat">Junkrat</option>
+		    <option value="Lucio">Lucio</option>
+		    <option value="McCree">McCree</option>
+		    <option value="Mei">Mei</option>
+		    <option value="Mercy">Mercy</option>
+		    <option value="Pharah">Pharah</option>
+		    <option value="Reaper">Reaper</option>
+		    <option value="Reinhardt">Reinhardt</option>
+		    <option value="Roadhog">Roadhog</option>
+		    <option value="Soldier">Soldier</option>
+		    <option value="Symmetra">Symmetra</option>
+		    <option value="Torbjorn">Torbjorn</option>
+		    <option value="Tracer">Tracer</option>
+		    <option value="Widowmaker">Widowmaker</option>
+		    <option value="Winston">Winston</option>
+		    <option value="Zarya">Zarya</option>
+		    <option value="Zenyatta">Zenyatta</option>
+	  	</select>
+	  	Wins: <input type="number" name="wins">
+		Losses: <input type="number" name="losses">
+		Time Played(hrs): <input type="number" name="timePlayed">
+		Kills: <input type="number" name="kills">
+	  	Deaths: <input type="number" name="deaths">
+	  	<input type="button" value="+" name="addHeroButton" onclick="addHero();">
+	</form>
+	
+	<script>
+
+	function heroPortraitLookUp(heroName){
+		baseDir = "HeroPortraits/";
+		return baseDir+heroName+"Portrait.png";
+	}
+
+	//takes form data and pumps out a template
+	function formToTemplate(formData){
+		//hero card div
+		var heroCardDiv = document.createElement("DIV");
+		heroCardDiv.className = "hero-card";
+
+		//hero portrait div
+		var heroPortraitDiv = document.createElement("DIV");
+		heroPortraitDiv.className = "hero-portrait";
+		heroPortraitDiv.innerHTML = "<img class=\"hero-image\" src=\""+heroPortraitLookUp(formData["hero"])+"\" alt=\"Hanzo Portrait\">" //TODO
+
+		//hero background info div
+		var backgroundInfoDiv = document.createElement("DIV");
+		backgroundInfoDiv.className = "background-info";
+		backgroundInfoDiv.innerHTML = "<h3 class=\"title\">"+formData["hero"]+"</h3>"+
+                						"<ul class=\"list-fields\">"+
+        									"<li>Origin:</li>"+
+						                    "<li>Role:</li>"+
+						                    "<li>Health:</li>"+
+						                    "<li>Ultimate:</li>"+
+						                    "<li>Member of Overwatch:</li>"+
+						                "</ul>";       					
+
+		//user stats div
+		var userStatsDiv = document.createElement("DIV");
+		userStatsDiv.className = "user-stats";
+		userStatsDiv.innerHTML = "<h3 class=\"title\">Stats</h3>"+
+            					 "<ul class=\"list-fields\">"+
+                    				"<li>Wins:"+formData["wins"]+"</li>" +
+                    				"<li>Losses:"+formData["losses"]+"</li>" +
+				                    "<li>Win-rate:</li>" +
+				                    "<li>Time Played:</li>" +
+				                    "<li>Eliminations/Death:</li>" +
+			               	     "</ul>" +
+				                 "<form class=\"update-stats\" action=\"session_tracker.html\">"+
+				                    "<input type=\"submit\" value=\"Edit\">" +
+				                 "</form>";
+		
+		//append all of hero card div's children
+		heroCardDiv.appendChild(heroPortraitDiv);
+		heroCardDiv.appendChild(backgroundInfoDiv);
+		heroCardDiv.appendChild(userStatsDiv);
+		
+		document.getElementsByTagName("BODY")[0].appendChild(heroCardDiv);
+	}
+
+	//extract form data 
+	function addHero() {
+		var dict = {};
+		dict["wins"] = document.getElementById("addHeroForm").elements["wins"].value;
+		dict["losses"] = document.getElementById("addHeroForm").elements["losses"].value;
+		dict["timePlayed"] = document.getElementById("addHeroForm").elements["timePlayed"].value;
+		dict["kills"] = document.getElementById("addHeroForm").elements["kills"].value;
+		dict["deaths"] = document.getElementById("addHeroForm").elements["deaths"].value;
+		dict["hero"] = document.getElementById("addHeroForm").elements["hero"].value;
+
+		//error checking
+		if(dict["wins"] == "" || dict["losses"] == "" || dict["timePlayed"] == "" || dict["kills"] == "" 
+			|| dict["deaths"] == "" || dict["hero"] == "" ){
+			alert("Please fill out all form fields");
+			return;
+		}
+
+		formToTemplate(dict)
+	}
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,272 @@
+@font-face {
+    font-family: 'BigNoodleToo';
+    src: url(bignoodletoo.ttf);
+}
+
+body {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: Arial, helvetica, sans-serif;
+    background-color: #a3c6ff; /* light blue */
+    color: #565353; /* dark grey */
+}
+
+
+main {
+    display: block;
+    margin: auto;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 800px;
+    text-align: center;
+}
+
+@media (max-width: 900px) {
+    main {
+        width: 700px;
+    }
+}
+
+@media (max-width: 800px) {
+    main {
+        font-size: 12px;
+        width: 600px;
+    }
+}
+
+@media (max-width: 700px) {
+    main {
+        padding: 0;
+        display: inline;
+    }
+}
+
+#OverDexBanner {
+    width: 100%;
+    border: 1px solid black;
+}
+
+@media (max-width: 700px) {
+    #OverDexBanner {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+}
+
+#nav {
+    height: 30px;
+    line-height: 30px;
+    color: black;
+}
+
+#sort-radio {
+    display: inline-block;
+    float: left;
+}
+
+#logout-btn {
+    display: inline-block;
+    float: right;
+}
+
+@media (max-width: 500px) {
+    #nav {
+        height: 50px;
+    }
+    #sort-radio {
+        display: inline;
+        text-align: center;
+        float: none;
+        margin: auto;
+    }
+
+    #logout-btn {
+        display: inline;
+        float: none;
+        margin: auto;
+    }
+}
+
+.hero-card {
+    text-align: center;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px black;
+    background-color: #ffdc9a; /* orange */
+}
+
+@media (max-width: 800px) {
+    .hero-card {
+        height: 180px;
+    }
+}
+
+@media(max-width: 500px) {
+    .hero-card {
+        height: 100%;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+}
+
+@media (max-width: 450px) {
+    .hero-card {
+        width: 100%;
+    }
+}
+
+.hero-card > * {
+    margin: 2px;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding-left: 3px;
+    width: 30%;
+    height: 200px;
+    text-align: left;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+@media (max-width: 800px) {
+    .hero-card > * {
+        height: 160px;
+    }
+}
+
+@media (max-width: 500px) {
+    .hero-card > * {
+        padding: 2px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 60%;
+        display: block;
+        font-size: 15px;
+    }
+}
+
+.hero-portrait {
+    margin: 2px;
+    border: none;
+    width: 30%;
+    height: 95%;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+}
+
+@media (max-width: 500px) {
+    .hero-portrait {
+        width: 100%;
+    }
+
+}
+
+.hero-image {
+    max-width: 200px;
+    width: 100%;
+}
+
+@media (max-width: 800px) {
+    .hero-image {
+        height: 150px;
+        width: 150px;
+    }
+}
+
+@media (max-width: 500px) {
+    .hero-image {
+        width: 40%;
+        height: 40%;
+        padding: 0;
+        margin: 0;
+
+    }
+}
+
+.title {
+    text-align: center;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    font-size: 40px;
+    color: black;
+    font-family: 'BigNoodleToo', Arial;
+}
+
+@media (max-width: 800px) {
+    .title {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 500px) {
+    .title {
+        padding-bottom: 1px;
+    }
+}
+
+.update-stats {
+    text-align: center;
+}
+
+.list-fields {
+    list-style: none;
+    padding-left: 0;
+}
+
+@media (max-width: 500px) {
+    .list-fields {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#floating-button{
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: #db4437;
+    position: fixed;
+    bottom: 30px;
+    right: 60px;
+    cursor: pointer;
+    box-shadow: 0px 2px 5px #666;
+}
+
+
+
+#plus{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    line-height: 55px;
+    font-size: 38px;
+    color: white;
+}
+
+@media (max-width: 700px) {
+    #floating-button {
+        width: 45px;
+        height: 45px;
+        right: 30px;
+    }
+
+    #plus {
+        line-height: 45px;
+    }
+}
+
