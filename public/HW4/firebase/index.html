@@ -8,7 +8,11 @@
 	<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase-app.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase-auth.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase-database.js"></script>
-	<script>
+
+	<!--For commmon DB operations-->
+	<script src="JS/dboperations.js"></script>	
+
+	<script>	  
 	  // Initialize Firebase
 	  var config = {
 	    apiKey: "AIzaSyDuF_qzwkeOCG9F4_I2eJTVcLxFkHnbdPQ",
@@ -22,6 +26,8 @@
 		  if (!user){
 		  	window.location.replace("login.html");
 		    // No user is signed in.
+		  }else{
+		  	displayFavoritesDB();
 		  }
 	  });
 
@@ -112,7 +118,6 @@
 	}
 	
 
-	
 	function logout(){
 		firebase.auth().signOut().then(function() {
 			window.location.replace("login.html");
@@ -126,7 +131,7 @@
 		return baseDir+heroName+"Portrait.png";
 	}
 
-	//takes form data and pumps out a template
+	//takes form data and pumps out a card template
 	function formToTemplate(formData){
 		//hero card div
 		var heroCardDiv = document.createElement("DIV");
@@ -172,6 +177,16 @@
 		document.getElementsByTagName("BODY")[0].appendChild(heroCardDiv);
 	}
 
+	function removeAllCards(){
+		console.log("removeAllCards");
+		//this assumes the cards are children of <body>
+		//var body = document.getElementsByTagName("BODY")[0];
+		var children = document.getElementsByClassName("hero-card");
+		while(children.length > 0){
+			children[0].parentNode.removeChild(children[0]);
+		}
+	}
+
 	//extract form data 
 	function addHero() {
 		var dict = {};
@@ -183,28 +198,10 @@
 			return;
 		}
 
-		var user = firebase.auth().currentUser;
-		addHeroDB(user.uid,dict["hero"]);
-
-		formToTemplate(dict)
+		addHeroDB(dict["hero"]);
+		removeAllCards();
+		displayFavoritesDB();
 	}
-	
-	function addHeroDB(user, hero) {
-	  // A post entry.
-	  var postData = {
-	    "wins": 0,
-	    "losses": 0,
-	    "timePlayed": 0,
-	    "eliminations": 0,
-	    "deaths": 0
-	  };
-
-	  // Write the new post's data simultaneously in the posts list and the user's post list.
-	  var updates = {};
-	  updates['/users/' + user + "/favorites/" + hero] = postData;
-	  return firebase.database().ref().update(updates);
-	}
-	
 
 	</script>
 
