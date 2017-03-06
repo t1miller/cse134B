@@ -35,11 +35,11 @@ function getFavoritesDB(){
 function addHeroDB(hero) {
 	// A post entry.
 	var postData = {
-	"wins": 0,
-	"losses": 0,
-	"timePlayed": 0,
-	"eliminations": 0,
-	"deaths": 0
+		"wins": 0,
+		"losses": 0,
+		"timePlayed": 0,
+		"eliminations": 0,
+		"deaths": 0
 	};
 
 	// Write the new post's data simultaneously in the posts list and the user's post list.

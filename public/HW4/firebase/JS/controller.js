@@ -53,11 +53,13 @@ function formToTemplate(formData){
 }
 
 function updateStats(hero) {
-	var updateFormExists = document.getElementById("update-stats-form");
-	if (updateFormExists != null) {
-		return;
+	var updateForm = document.getElementById("update-stats-div");
+	if (updateForm != null) {
+		updateForm.remove();
 	}
+
 	var updateStatsForm = document.createElement("DIV");
+	updateStatsForm.id = "update-stats-div"
 	updateStatsForm.innerHTML = "<form id=\"update-stats-form\" action=\"#\">"+
                 					"Games Won:"+
                 					"<input type=\"text\" name=\"gameswon\"><br>"+
@@ -69,9 +71,16 @@ function updateStats(hero) {
 				                    "<input type=\"text\" name=\"eliminations\"><br>"+
 				                    "Deaths:"+
 				                    "<input type=\"text\" name=\"deaths\"><br>"+
-				                    "<input type=\"button\" value=\"submit-update\" onClick=\"updateStatsDB('"+hero+"')\">"+
+				                    "<input type=\"button\" value=\"submit-update\" onClick=\"updateStatsHandler('"+hero+"')\">"+
 				                "</form>";
-	document.getElementsByClassName("hero-card")[0].appendChild(updateStatsForm);
+	document.getElementById(hero).appendChild(updateStatsForm);
+}
+
+function updateStatsHandler(hero) {
+	updateStatsDB(hero);
+
+	var updateForm = document.getElementById("update-stats-div");
+	updateForm.remove();
 }
 
 function removeAllCards(){
