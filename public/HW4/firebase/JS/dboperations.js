@@ -30,7 +30,26 @@ function getFavoritesDB(){
 		});
 	});
 	return favorites;
-  }
+}
+
+function getFavoritesHeroDB(hero) {
+	var dict = {};
+	var uid = firebase.auth().currentUser.uid;
+	firebase.database().ref("/users/" + uid + "/favorites/").once("value").then(function(snapshot) {
+		snapshot.forEach(function(childSnapshot) {
+			if (childSnapshot.key == hero) {
+				dict["hero"] = hero;
+				dict["wins"] = childSnapshot.val().wins;
+			    dict["losses"] = childSnapshot.val().losses;
+			    dict["timePlayed"] = childSnapshot.val().timePlayed;
+			    dict["eliminations"] = childSnapshot.val().eliminations;
+			    dict["deaths"] = childSnapshot.val().deaths;
+			    formToTemplate(dict);
+			}
+		});
+	});
+}
+
 
 function addHeroDB(hero) {
 	// A post entry.

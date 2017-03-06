@@ -117,20 +117,45 @@ function updateStatsHandler(hero) {
 		return;
 	}
 
+	/*
+	var favoritesDict = {};
+	var uid = firebase.auth().currentUser.uid;
+	firebase.database().ref("/users/" + uid + "/favorites/").once("value").then(function(snapshot) {
+		snapshot.forEach(function(childSnapshot) {
+			var heroInfo = {};
+			var heroName = childSnapshot.key;
+		    heroInfo["wins"] = childSnapshot.val().wins;
+		    heroInfo["losses"] = childSnapshot.val().losses;
+		    heroInfo["timePlayed"] = childSnapshot.val().timePlayed;
+		    heroInfo["eliminations"] = childSnapshot.val().eliminations;
+		    heroInfo["deaths"] = childSnapshot.val().deaths;
+		    favoritesDict[heroName] = heroInfo;
+		});
+	});
+	console.log(favoritesDict);
+	console.log(favoritesDict);
+	console.log(favoritesDict["Lucio"]);
+	*/
+	getFavoritesHeroDB(hero);
+	//console.log(JSON.stringify(faves));
+	//console.log(getFavoritesDB(hero)["deaths"]);
+	//console.log(faves["deaths"]);
+
+
 	var updateStatsDict = {};
-	updateStatsDict["wins"] = wins;
-	updateStatsDict["losses"] = losses;
-	updateStatsDict["timePlayed"] = timeplayed;
-	updateStatsDict["eliminations"] = eliminations;
-	updateStatsDict["deaths"] = deaths;
+	updateStatsDict["wins"] = parseInt(wins, 10);
+	updateStatsDict["losses"] = parseInt(losses, 10);
+	updateStatsDict["timePlayed"] = parseInt(timeplayed, 10);
+	updateStatsDict["eliminations"] = parseInt(eliminations, 10);
+	updateStatsDict["deaths"] = parseInt(deaths, 10);
     updateStatsDB(hero, updateStatsDict);
 
     var updateForm = document.getElementById("update-stats-div");
     updateForm.remove();
 
-    updateStatsDict["hero"] = hero;
-    formToTemplate(updateStatsDict);
-    console.log("here");
+    //updateStatsDict["hero"] = hero;
+    //formToTemplate(updateStatsDict);
+    //console.log("here");
     //var favoritesDict = getFavoritesDB();
 
 }
