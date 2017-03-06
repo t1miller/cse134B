@@ -112,9 +112,23 @@
 
 		// Write the new post's data simultaneously in the posts list and the user's post list.
 		var updates = {};
-		updates['/users/' + user.uid + "/favorites/" + hero] = postData;
+		updates['/users/' + user.uid + '/favorites/' + hero] = postData;
 		return firebase.database().ref().update(updates);
 		
+	}
+
+	function deleteHero(hero) {
+		document.getElementById(hero).remove();
+		deleteHeroDB(hero);
+	}
+
+
+	function deleteHeroDB(hero) {
+		var user = firebase.auth().currentUser;
+		var updates = {};
+		updates['/users/' + user.uid + '/favorites/' + hero] = null;
+		return firebase.database().ref().update(updates);
+		//firebase.database.ref('/users/' + user.uid + '/favorites/' + hero).remove();
 	}
 	
 
@@ -136,6 +150,7 @@
 		//hero card div
 		var heroCardDiv = document.createElement("DIV");
 		heroCardDiv.className = "hero-card";
+		heroCardDiv.id = formData["hero"];
 
 		//hero portrait div
 		var heroPortraitDiv = document.createElement("DIV");
@@ -167,6 +182,7 @@
 			               	     "</ul>" +
 				                 "<form class=\"update-stats\" action=\"#\">"+
 				                    "<input type=\"button\" value=\"Edit\" onClick=\"updateStats('"+formData["hero"]+"');\">" +
+				                    "<input type=\"button\" value=\"Delete\" onClick=\"deleteHero('"+formData["hero"]+"');\">" +
 				                 "</form>";
 		
 		//append all of hero card div's children
