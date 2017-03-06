@@ -56,14 +56,19 @@ function addHero() {
 
 	//error checking
 	if(dict["hero"] == "" ){
-		alert("Please fill out all form fields");
+		alert("Please select a hero");
 		return;
 	}
 
-	addHeroDB(dict["hero"]);
-	removeAllCards();
-	displayFavoritesDB();
+	//delete hero only if it exists
+	if(document.getElementById(dict["hero"]) == null){
+		addHeroDB(dict["hero"]);
+		formToTemplate(dict);
+	}else{
+		alert("Hero already exists.");
+	}
 }
+
 
 function deleteHero(hero) {
 	document.getElementById(hero).remove();
