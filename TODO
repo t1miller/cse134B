@@ -1,0 +1,12 @@
+
+- Clean up mobile experience
+
+- Clean up JS code
+
+- Remove update dropdown after user hits submit
+
+- Allow user to change who they are currently updating
+
+- Ask user 'are you sure' before a delete
+
+- Reorganize JS files
