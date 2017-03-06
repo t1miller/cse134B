@@ -78,24 +78,17 @@ function deleteHeroDB(hero) {
 	return firebase.database().ref().update(updates);
 }
 
-function updateStatsDB(hero) {
+function updateStatsDB(hero, updateStatsDict) {
 
 	var user = firebase.auth().currentUser;
 
-	var wins = document.getElementById("update-stats-form").elements["gameswon"].value;
-	var losses = document.getElementById("update-stats-form").elements["gameslost"].value;
-	var timeplayed = document.getElementById("update-stats-form").elements["timeplayed"].value;
-	var eliminations = document.getElementById("update-stats-form").elements["eliminations"].value;
-	var deaths = document.getElementById("update-stats-form").elements["deaths"].value;
-	
-
 	// A post entry.
 	var postData = {
-		"wins": wins,
-		"losses": losses,
-		"timePlayed": timeplayed,
-		"eliminations": eliminations,
-		"deaths": deaths
+		"wins": updateStatsDict["wins"],
+		"losses": updateStatsDict["losses"],
+		"timePlayed": updateStatsDict["timePlayed"],
+		"eliminations": updateStatsDict["eliminations"],
+		"deaths": updateStatsDict["deaths"]
 	};
 
 	// Write the new post's data simultaneously in the posts list and the user's post list.
