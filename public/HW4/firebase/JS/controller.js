@@ -14,7 +14,7 @@ function formToTemplate(formData){
 	//hero portrait div
 	var heroPortraitDiv = document.createElement("DIV");
 	heroPortraitDiv.className = "hero-portrait";
-	heroPortraitDiv.innerHTML = "<img class=\"hero-image\" src=\""+heroPortraitLookUp(formData["hero"])+"\" alt=\"Hanzo Portrait\">" //TODO
+	heroPortraitDiv.innerHTML = "<img class=\"hero-image\" src=\""+heroPortraitLookUp(formData["hero"])+"\" alt=\""+heroPortraitLookUp(formData["hero"])+"Portrait\">" //TODO
 
 	//hero background info div
 	var backgroundInfoDiv = document.createElement("DIV");
