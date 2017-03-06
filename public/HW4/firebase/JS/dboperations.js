@@ -17,19 +17,19 @@ function displayFavoritesDB(){
 function getFavoritesDB(){
 	var favorites = {};
 	var uid = firebase.auth().currentUser.uid;
-	return firebase.database().ref("/users/" + uid + "/favorites/").once("value").then(function(snapshot) {
-			snapshot.forEach(function(childSnapshot) {
-				var heroInfo = {};
-				var heroName = childSnapshot.key;
-			    heroInfo["wins"] = childSnapshot.val().wins;
-			    heroInfo["losses"] = childSnapshot.val().losses;
-			    heroInfo["timePlayed"] = childSnapshot.val().timePlayed;
-			    heroInfo["eliminations"] = childSnapshot.val().eliminations;
-			    heroInfo["deaths"] = childSnapshot.val().deaths;
-			    favorites[heroName] = heroInfo;
-
+	firebase.database().ref("/users/" + uid + "/favorites/").once("value").then(function(snapshot) {
+		snapshot.forEach(function(childSnapshot) {
+			var heroInfo = {};
+			var heroName = childSnapshot.key;
+		    heroInfo["wins"] = childSnapshot.val().wins;
+		    heroInfo["losses"] = childSnapshot.val().losses;
+		    heroInfo["timePlayed"] = childSnapshot.val().timePlayed;
+		    heroInfo["eliminations"] = childSnapshot.val().eliminations;
+		    heroInfo["deaths"] = childSnapshot.val().deaths;
+		    favorites[heroName] = heroInfo;
 		});
 	});
+	return favorites;
   }
 
 function addHeroDB(hero) {
@@ -47,4 +47,60 @@ function addHeroDB(hero) {
 	var uid = firebase.auth().currentUser.uid;
 	updates["/users/" + uid + "/favorites/" + hero] = postData;
 	return firebase.database().ref().update(updates);
+}
+
+//extract form data 
+function addHero() {
+	var dict = {};
+	dict["hero"] = document.getElementById("addHeroForm").elements["hero"].value;
+
+	//error checking
+	if(dict["hero"] == "" ){
+		alert("Please fill out all form fields");
+		return;
+	}
+
+	addHeroDB(dict["hero"]);
+	removeAllCards();
+	displayFavoritesDB();
+}
+
+function deleteHero(hero) {
+	document.getElementById(hero).remove();
+	deleteHeroDB(hero);
+}
+
+
+function deleteHeroDB(hero) {
+	var user = firebase.auth().currentUser;
+	var updates = {};
+	updates['/users/' + user.uid + '/favorites/' + hero] = null;
+	return firebase.database().ref().update(updates);
+}
+
+function updateStatsDB(hero) {
+
+	var user = firebase.auth().currentUser;
+
+	var wins = document.getElementById("update-stats-form").elements["gameswon"].value;
+	var losses = document.getElementById("update-stats-form").elements["gameslost"].value;
+	var timeplayed = document.getElementById("update-stats-form").elements["timeplayed"].value;
+	var eliminations = document.getElementById("update-stats-form").elements["eliminations"].value;
+	var deaths = document.getElementById("update-stats-form").elements["deaths"].value;
+	
+
+	// A post entry.
+	var postData = {
+		"wins": wins,
+		"losses": losses,
+		"timePlayed": timeplayed,
+		"eliminations": eliminations,
+		"deaths": deaths
+	};
+
+	// Write the new post's data simultaneously in the posts list and the user's post list.
+	var updates = {};
+	updates['/users/' + user.uid + '/favorites/' + hero] = postData;
+	return firebase.database().ref().update(updates);
+	
 }
