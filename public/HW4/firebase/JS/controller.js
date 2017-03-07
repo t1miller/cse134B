@@ -1,8 +1,8 @@
 
 function heroPortraitLookUp(heroName){
-        baseDir = "HeroPortraits/";
-        return baseDir+heroName+"Portrait.png";
-    }
+	baseDir = "HeroPortraits/";
+	return baseDir+heroName+"Portrait.png";
+}
 
 //takes form data and pumps out a card template
 function formToTemplate(formData){
