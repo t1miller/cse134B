@@ -45,7 +45,7 @@ function combineStatsDB(hero, updateStatsDict) {
 			    combinedStats["eliminations"] = childSnapshot.val().eliminations + updateStatsDict["eliminations"];
 			    combinedStats["deaths"] = childSnapshot.val().deaths + updateStatsDict["deaths"];
 			    updateStatsDB(hero, combinedStats);
-			    formToTemplate(combinedStats)
+			    formToTemplate(combinedStats,null)
 			}
 		});
 	});
@@ -107,6 +107,18 @@ function addHeroDB(hero) {
 	var uid = firebase.auth().currentUser.uid;
 	updates["/users/" + uid + "/favorites/" + hero] = postData;
 	return firebase.database().ref().update(updates);
+}
+
+function getStaticHeroInfoDB(hero){
+	var heroInfo = {};
+	firebase.database().ref("/staticHeroInfo/" + hero).once("value").then(function(snapshot) {
+		heroInfo["health"] = snapshot.val().health;
+		heroInfo["role"] = snapshot.val().role;
+		heroInfo["ultimate"] = snapshot.val().ultimate;
+		heroInfo["memberOfOverwatch"] = snapshot.val().memberOfOverwatch;
+		heroInfo["origin"] = snapshot.val().origin;
+		setStaticHero(heroInfo,hero);
+	});
 }
 
 //extract form data 

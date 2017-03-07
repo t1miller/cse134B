@@ -4,6 +4,19 @@ function heroPortraitLookUp(heroName){
 	return baseDir+heroName+"Portrait.png";
 }
 
+function setStaticHero(staticHeroInfo,heroName){
+    var staticHeroDiv = document.getElementById("static-hero-info"+heroName);
+    staticHeroDiv.innerHTML = "<h3 class=\"title\">"+heroName+"</h3>"+
+                                "<ul class=\"list-fields\">"+
+                                    "<li>Origin: "+staticHeroInfo["origin"]+"</li>"+
+                                    "<li>Role: "+staticHeroInfo["role"]+"</li>"+
+                                    "<li>Health: "+staticHeroInfo["health"]+"</li>"+
+                                    "<li>Ultimate: "+staticHeroInfo["ultimate"]+"</li>"+
+                                    "<li>Member of Overwatch: "+staticHeroInfo["memberOfOverwatch"]+"</li>"+
+                                "</ul>"; 
+                  
+}
+
 //takes form data and pumps out a card template
 function formToTemplate(formData){
 
@@ -23,14 +36,16 @@ function formToTemplate(formData){
         //hero background info div
         var backgroundInfoDiv = document.createElement("DIV");
         backgroundInfoDiv.className = "background-info";
-        backgroundInfoDiv.innerHTML = "<h3 class=\"title\">"+formData["hero"]+"</h3>"+
+        backgroundInfoDiv.id = "static-hero-info"+formData["hero"];
+        backgroundInfoDiv.innerHTML =   "<h3 class=\"title\">"+formData["hero"]+"</h3>"+
                                         "<ul class=\"list-fields\">"+
                                             "<li>Origin:</li>"+
                                             "<li>Role:</li>"+
                                             "<li>Health:</li>"+
                                             "<li>Ultimate:</li>"+
                                             "<li>Member of Overwatch:</li>"+
-                                        "</ul>";                        
+                                        "</ul>";    
+                           
 
         //user stats div
         var userStatsDiv = document.createElement("DIV");
@@ -61,8 +76,10 @@ function formToTemplate(formData){
         heroCardDiv.appendChild(heroPortraitDiv);
         heroCardDiv.appendChild(backgroundInfoDiv);
         heroCardDiv.appendChild(userStatsDiv);
+
         
         document.getElementsByTagName("BODY")[0].appendChild(heroCardDiv);
+        getStaticHeroInfoDB(formData["hero"])
     }
     else {
         //user stats div
