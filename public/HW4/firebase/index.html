@@ -17,28 +17,29 @@
 	
 
 	<script>	  
-	  // Initialize Firebase
-	  var config = {
-	    apiKey: "AIzaSyDuF_qzwkeOCG9F4_I2eJTVcLxFkHnbdPQ",
-	    authDomain: "overdex-f33ef.firebaseapp.com",
-	    databaseURL: "https://overdex-f33ef.firebaseio.com/",
-	    storageBucket: "gs://overdex-f33ef.appspot.com",
-	    messagingSenderId: "<SENDER_ID>"
-	  };
-	  firebase.initializeApp(config);
-	  firebase.auth().onAuthStateChanged(function(user) {
-		  if (!user){
-		  	window.location.replace("login.html");
-		    // No user is signed in.
-		  }else{
-		  	console.log(displayFavoritesDB());
-		  }
-	  });
+	    // Initialize Firebase
+	    var config = {
+	    	apiKey: "AIzaSyDuF_qzwkeOCG9F4_I2eJTVcLxFkHnbdPQ",
+	    	authDomain: "overdex-f33ef.firebaseapp.com",
+	    	databaseURL: "https://overdex-f33ef.firebaseio.com/",
+	    	storageBucket: "gs://overdex-f33ef.appspot.com",
+	    	messagingSenderId: "<SENDER_ID>"
+	    };
+	    firebase.initializeApp(config);
+	    firebase.auth().onAuthStateChanged(function(user) {
+		    // User is not signed in
+		    if (!user) {
+		  		window.location.replace("login.html");
+		    	
+		    }
+		    else {
+		  		console.log(displayFavoritesDB());
+		    }
+	    });
 
 	</script>
 </head>
 <body>
-
 	<button type="button" id="logout" onclick="logout()">Logout</button>
 	<form action="#" id="addHeroForm">
 	  	<select name="hero">
@@ -69,13 +70,13 @@
 	</form>
 
 	<script>
-	function logout(){
-		firebase.auth().signOut().then(function() {
-			window.location.replace("login.html");
-		}, function(error) {
-		 	console.log("Error logging out");
-		});
-	}
+		function logout() {
+			firebase.auth().signOut().then(function() {
+				window.location.replace("login.html");
+			}, function(error) {
+			 	console.log("Error logging out");
+			});
+		}
 	</script>
 </body>
 </html>
