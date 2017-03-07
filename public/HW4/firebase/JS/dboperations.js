@@ -32,22 +32,63 @@ function getFavoritesDB(){
 	return favorites;
 }
 
-function getFavoritesHeroDB(hero) {
-	var dict = {};
+function combineStatsDB(hero, updateStatsDict) {
+	var combinedStats = {};
 	var uid = firebase.auth().currentUser.uid;
 	firebase.database().ref("/users/" + uid + "/favorites/").once("value").then(function(snapshot) {
 		snapshot.forEach(function(childSnapshot) {
 			if (childSnapshot.key == hero) {
-				dict["hero"] = hero;
-				dict["wins"] = childSnapshot.val().wins;
-			    dict["losses"] = childSnapshot.val().losses;
-			    dict["timePlayed"] = childSnapshot.val().timePlayed;
-			    dict["eliminations"] = childSnapshot.val().eliminations;
-			    dict["deaths"] = childSnapshot.val().deaths;
-			    formToTemplate(dict);
+				combinedStats["hero"] = hero;
+				combinedStats["wins"] = childSnapshot.val().wins + updateStatsDict["wins"];
+			    combinedStats["losses"] = childSnapshot.val().losses + updateStatsDict["losses"];
+			    combinedStats["timePlayed"] = childSnapshot.val().timePlayed + updateStatsDict["timePlayed"];
+			    combinedStats["eliminations"] = childSnapshot.val().eliminations + updateStatsDict["eliminations"];
+			    combinedStats["deaths"] = childSnapshot.val().deaths + updateStatsDict["deaths"];
+			    updateStatsDB(hero, combinedStats);
+			    formToTemplate(combinedStats)
 			}
 		});
 	});
+}
+
+/*
+function updateStatsFromDB(hero) {
+	var newStats = {};
+	var uid = firebase.auth().currentUser.uid;
+	firebase.database().ref("/users/" + uid + "/favorites/").once("value").then(function(snapshot) {
+		snapshot.forEach(function(childSnapshot) {
+			if (childSnapshot.key == hero) {
+				newStats["hero"] = hero;
+				newStats["wins"] = childSnapshot.val().wins;
+			    newStats["losses"] = childSnapshot.val().losses;
+			    newStats["timePlayed"] = childSnapshot.val().timePlayed;
+			    newStats["eliminations"] = childSnapshot.val().eliminations;
+			    newStats["deaths"] = childSnapshot.val().deaths;
+			    console.log(newStats);
+			    formToTemplate(newStats);
+			}
+		});
+	});
+}
+*/
+
+function updateStatsDB(hero, updateStatsDict) {
+	var user = firebase.auth().currentUser;
+
+	// A post entry.
+	var postData = {
+		"wins": updateStatsDict["wins"],
+		"losses": updateStatsDict["losses"],
+		"timePlayed": updateStatsDict["timePlayed"],
+		"eliminations": updateStatsDict["eliminations"],
+		"deaths": updateStatsDict["deaths"]
+	};
+
+	// Write the new post's data simultaneously in the posts list and the user's post list.
+	var updates = {};
+	updates['/users/' + user.uid + '/favorites/' + hero] = postData;
+	return firebase.database().ref().update(updates);
+	
 }
 
 
@@ -97,22 +138,3 @@ function deleteHeroDB(hero) {
 	return firebase.database().ref().update(updates);
 }
 
-function updateStatsDB(hero, updateStatsDict) {
-
-	var user = firebase.auth().currentUser;
-
-	// A post entry.
-	var postData = {
-		"wins": updateStatsDict["wins"],
-		"losses": updateStatsDict["losses"],
-		"timePlayed": updateStatsDict["timePlayed"],
-		"eliminations": updateStatsDict["eliminations"],
-		"deaths": updateStatsDict["deaths"]
-	};
-
-	// Write the new post's data simultaneously in the posts list and the user's post list.
-	var updates = {};
-	updates['/users/' + user.uid + '/favorites/' + hero] = postData;
-	return firebase.database().ref().update(updates);
-	
-}

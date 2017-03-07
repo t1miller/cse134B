@@ -36,8 +36,14 @@ function formToTemplate(formData){
         var userStatsDiv = document.createElement("DIV");
         userStatsDiv.className = "user-stats";
         userStatsDiv.id = "user-stats" + formData["hero"];
-        var winrate = formData["wins"] / formData["losses"];
+        var winrate = formData["wins"] / (formData["wins"] + formData["losses"]);
+        if (isNaN(winrate)) {
+        	winrate = 0;
+        }
         var edRatio = formData["eliminations"] / formData["deaths"];
+        if (isNaN(edRatio)) {
+        	edRatio = 0;
+        }
         userStatsDiv.innerHTML = "<h3 class=\"title\">Stats</h3>"+
                                  "<ul class=\"list-fields\">"+
                                     "<li>Wins: "+formData["wins"]+"</li>" +
@@ -63,8 +69,14 @@ function formToTemplate(formData){
         var userStatsDiv = document.getElementById("user-stats" + formData["hero"]);
         userStatsDiv.className = "user-stats";
         userStatsDiv.id = "user-stats" + formData["hero"];
-        var winrate = formData["wins"] / formData["losses"];
+        var winrate = formData["wins"] / (formData["wins"] + formData["losses"]);
+        if (isNaN(winrate)) {
+        	winrate = 0;
+        }
         var edRatio = formData["eliminations"] / formData["deaths"];
+        if (isNaN(edRatio)) {
+        	edRatio = 0;
+        }
         userStatsDiv.innerHTML = "<h3 class=\"title\">Stats</h3>"+
                                  "<ul class=\"list-fields\">"+
                                     "<li>Wins: "+formData["wins"]+"</li>" +
@@ -117,47 +129,20 @@ function updateStatsHandler(hero) {
 		return;
 	}
 
-	/*
-	var favoritesDict = {};
-	var uid = firebase.auth().currentUser.uid;
-	firebase.database().ref("/users/" + uid + "/favorites/").once("value").then(function(snapshot) {
-		snapshot.forEach(function(childSnapshot) {
-			var heroInfo = {};
-			var heroName = childSnapshot.key;
-		    heroInfo["wins"] = childSnapshot.val().wins;
-		    heroInfo["losses"] = childSnapshot.val().losses;
-		    heroInfo["timePlayed"] = childSnapshot.val().timePlayed;
-		    heroInfo["eliminations"] = childSnapshot.val().eliminations;
-		    heroInfo["deaths"] = childSnapshot.val().deaths;
-		    favoritesDict[heroName] = heroInfo;
-		});
-	});
-	console.log(favoritesDict);
-	console.log(favoritesDict);
-	console.log(favoritesDict["Lucio"]);
-	*/
-	getFavoritesHeroDB(hero);
-	//console.log(JSON.stringify(faves));
-	//console.log(getFavoritesDB(hero)["deaths"]);
-	//console.log(faves["deaths"]);
-
-
 	var updateStatsDict = {};
 	updateStatsDict["wins"] = parseInt(wins, 10);
 	updateStatsDict["losses"] = parseInt(losses, 10);
 	updateStatsDict["timePlayed"] = parseInt(timeplayed, 10);
 	updateStatsDict["eliminations"] = parseInt(eliminations, 10);
 	updateStatsDict["deaths"] = parseInt(deaths, 10);
-    updateStatsDB(hero, updateStatsDict);
+
+    combineStatsDB(hero, updateStatsDict);
+    //updateStatsDict["hero"] = hero;
+    //formToTemplate(updateStatsDict);
+    //updateStatsFromDB(hero);
 
     var updateForm = document.getElementById("update-stats-div");
     updateForm.remove();
-
-    //updateStatsDict["hero"] = hero;
-    //formToTemplate(updateStatsDict);
-    //console.log("here");
-    //var favoritesDict = getFavoritesDB();
-
 }
 
 function removeAllCards(){
