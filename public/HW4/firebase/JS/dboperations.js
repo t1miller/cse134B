@@ -1,37 +1,26 @@
-function displayFavoritesDB(){
+/*
+ * This file contains operations on the Firebase database.
+ */
+
+// Retrieve the user's favorite Heroes from the database and then display this 
+// data using formToTemplate
+function displayFavoritesDB() {
 	var dict = {};
 	var uid = firebase.auth().currentUser.uid;
 	return firebase.database().ref("/users/" + uid + "/favorites/").once("value").then(function(snapshot) {
-			  snapshot.forEach(function(childSnapshot) {
-			    dict["hero"] = childSnapshot.key;
-			    dict["wins"] = childSnapshot.val().wins;
-			    dict["losses"] = childSnapshot.val().losses;
-			    dict["timePlayed"] = childSnapshot.val().timePlayed;
-			    dict["eliminations"] = childSnapshot.val().eliminations;
-			    dict["deaths"] = childSnapshot.val().deaths;
-			    formToTemplate(dict);
+			snapshot.forEach(function(childSnapshot) {
+				dict["hero"] = childSnapshot.key;
+				dict["wins"] = childSnapshot.val().wins;
+				dict["losses"] = childSnapshot.val().losses;
+				dict["timePlayed"] = childSnapshot.val().timePlayed;
+				dict["eliminations"] = childSnapshot.val().eliminations;
+				dict["deaths"] = childSnapshot.val().deaths;
+				formToTemplate(dict);
 		});
 	});
 }
 
-function getFavoritesDB(){
-	var favorites = {};
-	var uid = firebase.auth().currentUser.uid;
-	firebase.database().ref("/users/" + uid + "/favorites/").once("value").then(function(snapshot) {
-		snapshot.forEach(function(childSnapshot) {
-			var heroInfo = {};
-			var heroName = childSnapshot.key;
-		    heroInfo["wins"] = childSnapshot.val().wins;
-		    heroInfo["losses"] = childSnapshot.val().losses;
-		    heroInfo["timePlayed"] = childSnapshot.val().timePlayed;
-		    heroInfo["eliminations"] = childSnapshot.val().eliminations;
-		    heroInfo["deaths"] = childSnapshot.val().deaths;
-		    favorites[heroName] = heroInfo;
-		});
-	});
-	return favorites;
-}
-
+// 
 function combineStatsDB(hero, updateStatsDict) {
 	var combinedStats = {};
 	var uid = firebase.auth().currentUser.uid;
@@ -121,25 +110,7 @@ function getStaticHeroInfoDB(hero){
 	});
 }
 
-//extract form data 
-function addHero() {
-	var dict = {};
-	dict["hero"] = document.getElementById("addHeroForm").elements["hero"].value;
 
-	//error checking
-	if(dict["hero"] == "" ){
-		alert("Please select a hero");
-		return;
-	}
-
-	//delete hero only if it exists
-	if(document.getElementById(dict["hero"]) == null){
-		addHeroDB(dict["hero"]);
-		formToTemplate(dict);
-	}else{
-		alert("Hero already exists.");
-	}
-}
 
 
 function deleteHero(hero) {

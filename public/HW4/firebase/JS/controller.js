@@ -1,24 +1,37 @@
 
-function heroPortraitLookUp(heroName){
+/*
+ * This file contains functions related to controlling the DOM and interacting 
+ * with the Firebase database.  It extracts user input from the DOM and then 
+ * passes this information to the database.  It also returns responses from 
+ * the database and displays it on the DOM.
+ */
+
+
+// Return the Hero's portrait based on heroName
+function heroPortraitLookUp(heroName) {
 	baseDir = "HeroPortraits/";
 	return baseDir+heroName+"Portrait.png";
 }
 
-function setStaticHero(staticHeroInfo,heroName){
+
+// Set the data for one static hero based on data in the staticHeroInfo 
+// dictionary
+function setStaticHero(staticHeroInfo,heroName) {
     var staticHeroDiv = document.getElementById("static-hero-info"+heroName);
     staticHeroDiv.innerHTML = "<h3 class=\"title\">"+heroName+"</h3>"+
-                                "<ul class=\"list-fields\">"+
-                                    "<li>Origin: "+staticHeroInfo["origin"]+"</li>"+
-                                    "<li>Role: "+staticHeroInfo["role"]+"</li>"+
-                                    "<li>Health: "+staticHeroInfo["health"]+"</li>"+
-                                    "<li>Ultimate: "+staticHeroInfo["ultimate"]+"</li>"+
-                                    "<li>Member of Overwatch: "+staticHeroInfo["memberOfOverwatch"]+"</li>"+
-                                "</ul>"; 
+	                              "<ul class=\"list-fields\">"+
+	                                  "<li>Origin: "+staticHeroInfo["origin"]+"</li>"+
+	                                  "<li>Role: "+staticHeroInfo["role"]+"</li>"+
+	                                  "<li>Health: "+staticHeroInfo["health"]+"</li>"+
+	                                  "<li>Ultimate: "+staticHeroInfo["ultimate"]+"</li>"+
+	                                  "<li>Member of Overwatch: "+staticHeroInfo["memberOfOverwatch"]+"</li>"+
+	                              "</ul>"; 
                   
 }
 
-//takes form data and pumps out a card template
-function formToTemplate(formData){
+
+// Takes form data and pumps out a card template
+function formToTemplate(formData) {
 
     var existingHeroCard = document.getElementById(formData["hero"]);
     
@@ -52,11 +65,11 @@ function formToTemplate(formData){
         userStatsDiv.className = "user-stats";
         userStatsDiv.id = "user-stats" + formData["hero"];
         var winrate = formData["wins"] / (formData["wins"] + formData["losses"]);
-        if (isNaN(winrate)) {
+        if (isNaN(winrate) || typeof winrate == "undefined") {
         	winrate = 0;
         }
         var edRatio = formData["eliminations"] / formData["deaths"];
-        if (isNaN(edRatio)) {
+        if (isNaN(edRatio) || typeof edRatio == "undefined") {
         	edRatio = 0;
         }
         userStatsDiv.innerHTML = "<h3 class=\"title\">Stats</h3>"+
@@ -87,11 +100,11 @@ function formToTemplate(formData){
         userStatsDiv.className = "user-stats";
         userStatsDiv.id = "user-stats" + formData["hero"];
         var winrate = formData["wins"] / (formData["wins"] + formData["losses"]);
-        if (isNaN(winrate)) {
+        if (isNaN(winrate) || typeof winrate == "undefined") {
         	winrate = 0;
         }
         var edRatio = formData["eliminations"] / formData["deaths"];
-        if (isNaN(edRatio)) {
+        if (isNaN(edRatio) || typeof edRatio == "undefined") {
         	edRatio = 0;
         }
         userStatsDiv.innerHTML = "<h3 class=\"title\">Stats</h3>"+
@@ -160,6 +173,33 @@ function updateStatsHandler(hero) {
 
     var updateForm = document.getElementById("update-stats-div");
     updateForm.remove();
+}
+
+
+// Add a hero to the favorites list
+function addHero() {
+	var dict = {};
+	dict["hero"] = document.getElementById("addHeroForm").elements["hero"].value;
+	dict["wins"] = 0;
+	dict["losses"] = 0;
+	dict["timePlayed"] = 0;
+	dict["eliminations"] = 0;
+	dict["deaths"] = 0;
+
+	// Make sure the user has selected a Hero
+	if(dict["hero"] == "") {
+		alert("Please select a hero");
+		return;
+	}
+
+	// Only add the Hero if it is not already favorited
+	if(document.getElementById(dict["hero"]) == null){
+		addHeroDB(dict["hero"]);
+		formToTemplate(dict);
+	}
+	else {
+		alert("Hero already exists.");
+	}
 }
 
 function removeAllCards(){
