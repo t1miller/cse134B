@@ -20,7 +20,8 @@ function displayFavoritesDB() {
 	});
 }
 
-// 
+// Combine the current stats from the database with the new stats from user 
+// input and update the DOM with these values
 function combineStatsDB(hero, updateStatsDict) {
 	var combinedStats = {};
 	var uid = firebase.auth().currentUser.uid;
@@ -41,6 +42,8 @@ function combineStatsDB(hero, updateStatsDict) {
 }
 
 /*
+// Used for updating the DOM based on the database values instead of user input 
+// data.  This turned out to be too slow due to Firebase's asynchonous nature
 function updateStatsFromDB(hero) {
 	var newStats = {};
 	var uid = firebase.auth().currentUser.uid;
@@ -61,6 +64,8 @@ function updateStatsFromDB(hero) {
 }
 */
 
+
+// Update the user stats in the database with new values
 function updateStatsDB(hero, updateStatsDict) {
 	var user = firebase.auth().currentUser;
 
@@ -77,10 +82,11 @@ function updateStatsDB(hero, updateStatsDict) {
 	var updates = {};
 	updates['/users/' + user.uid + '/favorites/' + hero] = postData;
 	return firebase.database().ref().update(updates);
-	
 }
 
 
+// Add a new hero into the user's favorites list in the database with all stats 
+// initialized to 0
 function addHeroDB(hero) {
 	// A post entry.
 	var postData = {
@@ -91,13 +97,14 @@ function addHeroDB(hero) {
 		"deaths": 0
 	};
 
-	// Write the new post's data simultaneously in the posts list and the user's post list.
 	var updates = {};
 	var uid = firebase.auth().currentUser.uid;
 	updates["/users/" + uid + "/favorites/" + hero] = postData;
 	return firebase.database().ref().update(updates);
 }
 
+
+// Get static info for hero from the database
 function getStaticHeroInfoDB(hero){
 	var heroInfo = {};
 	firebase.database().ref("/staticHeroInfo/" + hero).once("value").then(function(snapshot) {
@@ -111,14 +118,7 @@ function getStaticHeroInfoDB(hero){
 }
 
 
-
-
-function deleteHero(hero) {
-	document.getElementById(hero).remove();
-	deleteHeroDB(hero);
-}
-
-
+// Delete a hero from the database
 function deleteHeroDB(hero) {
 	var user = firebase.auth().currentUser;
 	var updates = {};

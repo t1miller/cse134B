@@ -207,6 +207,13 @@ function updateStatsHandler(hero) {
 }
 
 
+// Delete a heo
+function deleteHero(hero) {
+	document.getElementById(hero).remove();
+	deleteHeroDB(hero);
+}
+
+
 // Remove all hero cards
 function removeAllCards(){
     console.log("removeAllCards");
