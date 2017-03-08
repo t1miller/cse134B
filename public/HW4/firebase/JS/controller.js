@@ -16,7 +16,7 @@ function heroPortraitLookUp(heroName) {
 
 // Set the data for one static hero based on data in the staticHeroInfo 
 // dictionary
-function setStaticHero(staticHeroInfo,heroName) {
+function setStaticHero(staticHeroInfo, heroName) {
     var staticHeroDiv = document.getElementById("static-hero-info"+heroName);
     staticHeroDiv.innerHTML = "<h3 class=\"title\">"+heroName+"</h3>"+
 	                              "<ul class=\"list-fields\">"+
@@ -31,22 +31,22 @@ function setStaticHero(staticHeroInfo,heroName) {
 
 
 // Takes form data and pumps out a card template
-function formToTemplate(formData) {
+function createHeroCard(formData) {
 
     var existingHeroCard = document.getElementById(formData["hero"]);
     
     if (existingHeroCard == null) {
-        //hero card div
+        // Hero card div
         var heroCardDiv = document.createElement("DIV");
         heroCardDiv.className = "hero-card";
         heroCardDiv.id = formData["hero"];
 
-        //hero portrait div
+        // Hero portrait div
         var heroPortraitDiv = document.createElement("DIV");
         heroPortraitDiv.className = "hero-portrait";
-        heroPortraitDiv.innerHTML = "<img class=\"hero-image\" src=\""+heroPortraitLookUp(formData["hero"])+"\" alt=\""+formData["hero"]+"\">" //TODO
+        heroPortraitDiv.innerHTML = "<img class=\"hero-image\" src=\""+heroPortraitLookUp(formData["hero"])+"\" alt=\""+formData["hero"]+"\">"
 
-        //hero background info div
+        // Hero background info div
         var backgroundInfoDiv = document.createElement("DIV");
         backgroundInfoDiv.className = "background-info";
         backgroundInfoDiv.id = "static-hero-info"+formData["hero"];
@@ -60,7 +60,7 @@ function formToTemplate(formData) {
                                         "</ul>";    
                            
 
-        //user stats div
+        // User stats div
         var userStatsDiv = document.createElement("DIV");
         userStatsDiv.className = "user-stats";
         userStatsDiv.id = "user-stats" + formData["hero"];
@@ -81,21 +81,21 @@ function formToTemplate(formData) {
                                     "<li>Eliminations/Death: "+edRatio+"</li>" +
                                  "</ul>" +
                                  "<form class=\"update-stats\" action=\"#\">"+
-                                    "<input type=\"button\" value=\"Edit\" onClick=\"updateStats('"+formData["hero"]+"');\">" +
+                                    "<input type=\"button\" value=\"Edit\" onClick=\"createUpdateStatsForm('"+formData["hero"]+"');\">" +
                                     "<input type=\"button\" value=\"Delete\" onClick=\"deleteHero('"+formData["hero"]+"');\">" +
                                  "</form>";
         
-        //append all of hero card div's children
+        // Append all of the Hero card div's children
         heroCardDiv.appendChild(heroPortraitDiv);
         heroCardDiv.appendChild(backgroundInfoDiv);
         heroCardDiv.appendChild(userStatsDiv);
 
-        
+        // Append the Hero card to the body
         document.getElementsByTagName("BODY")[0].appendChild(heroCardDiv);
-        getStaticHeroInfoDB(formData["hero"])
+        getStaticHeroInfoDB(formData["hero"]);
     }
     else {
-        //user stats div
+        // User stats div
         var userStatsDiv = document.getElementById("user-stats" + formData["hero"]);
         userStatsDiv.className = "user-stats";
         userStatsDiv.id = "user-stats" + formData["hero"];
@@ -116,63 +116,12 @@ function formToTemplate(formData) {
                                     "<li>Eliminations/Death: "+edRatio+"</li>" +
                                  "</ul>" +
                                  "<form class=\"update-stats\" action=\"#\">"+
-                                    "<input type=\"button\" value=\"Edit\" onClick=\"updateStats('"+formData["hero"]+"');\">" +
+                                    "<input type=\"button\" value=\"Edit\" onClick=\"createUpdateStatsForm('"+formData["hero"]+"');\">" +
                                     "<input type=\"button\" value=\"Delete\" onClick=\"deleteHero('"+formData["hero"]+"');\">" +
                                  "</form>";
 
     }
     
-}
-
-function updateStats(hero) {
-    var updateForm = document.getElementById("update-stats-div");
-    if (updateForm != null) {
-        updateForm.remove();
-    }
-
-    var updateStatsForm = document.createElement("DIV");
-    updateStatsForm.id = "update-stats-div"
-    updateStatsForm.innerHTML = "<form id=\"update-stats-form\" action=\"#\">"+
-                                    "Games Won:"+
-                                    "<input type=\"text\" name=\"gameswon\"><br>"+
-                                    "Games Lost:"+
-                                    "<input type=\"text\" name=\"gameslost\"><br>"+
-                                    "Time Played:"+
-                                    "<input type=\"text\" name=\"timeplayed\"><br>"+
-                                    "Eliminations:"+
-                                    "<input type=\"text\" name=\"eliminations\"><br>"+
-                                    "Deaths:"+
-                                    "<input type=\"text\" name=\"deaths\"><br>"+
-                                    "<input type=\"button\" value=\"submit-update\" onClick=\"updateStatsHandler('"+hero+"')\">"+
-                                "</form>";
-    document.getElementById(hero).appendChild(updateStatsForm);
-}
-
-function updateStatsHandler(hero) {
-	var wins = document.getElementById("update-stats-form").elements["gameswon"].value;
-	var losses = document.getElementById("update-stats-form").elements["gameslost"].value;
-	var timeplayed = document.getElementById("update-stats-form").elements["timeplayed"].value;
-	var eliminations = document.getElementById("update-stats-form").elements["eliminations"].value;
-	var deaths = document.getElementById("update-stats-form").elements["deaths"].value;
-
-	if (wins == "" || losses == "" || timeplayed == "" || eliminations == "" || deaths == "") {
-		return;
-	}
-
-	var updateStatsDict = {};
-	updateStatsDict["wins"] = parseInt(wins, 10);
-	updateStatsDict["losses"] = parseInt(losses, 10);
-	updateStatsDict["timePlayed"] = parseInt(timeplayed, 10);
-	updateStatsDict["eliminations"] = parseInt(eliminations, 10);
-	updateStatsDict["deaths"] = parseInt(deaths, 10);
-
-    combineStatsDB(hero, updateStatsDict);
-    //updateStatsDict["hero"] = hero;
-    //formToTemplate(updateStatsDict);
-    //updateStatsFromDB(hero);
-
-    var updateForm = document.getElementById("update-stats-div");
-    updateForm.remove();
 }
 
 
@@ -195,18 +144,75 @@ function addHero() {
 	// Only add the Hero if it is not already favorited
 	if(document.getElementById(dict["hero"]) == null){
 		addHeroDB(dict["hero"]);
-		formToTemplate(dict);
+		createHeroCard(dict);
 	}
 	else {
 		alert("Hero already exists.");
 	}
 }
 
+
+// Create a new update stats form for hero
+function createUpdateStatsForm(hero) {
+    var updateForm = document.getElementById("update-stats-div");
+    // Remove the old update form if it exists
+    if (updateForm != null) {
+        updateForm.remove();
+    }
+
+    var updateStatsForm = document.createElement("DIV");
+    updateStatsForm.id = "update-stats-div"
+    updateStatsForm.innerHTML = "<form id=\"update-stats-form\" action=\"#\">"+
+                                    "Games Won:"+
+                                    "<input type=\"text\" name=\"gameswon\"><br>"+
+                                    "Games Lost:"+
+                                    "<input type=\"text\" name=\"gameslost\"><br>"+
+                                    "Time Played:"+
+                                    "<input type=\"text\" name=\"timeplayed\"><br>"+
+                                    "Eliminations:"+
+                                    "<input type=\"text\" name=\"eliminations\"><br>"+
+                                    "Deaths:"+
+                                    "<input type=\"text\" name=\"deaths\"><br>"+
+                                    "<input type=\"button\" value=\"submit-update\" onClick=\"updateStatsHandler('"+hero+"')\">"+
+                                "</form>";
+    document.getElementById(hero).appendChild(updateStatsForm);
+}
+
+
+// Extract the user input from the update form and update the database with 
+// these values
+function updateStatsHandler(hero) {
+	var wins = document.getElementById("update-stats-form").elements["gameswon"].value;
+	var losses = document.getElementById("update-stats-form").elements["gameslost"].value;
+	var timeplayed = document.getElementById("update-stats-form").elements["timeplayed"].value;
+	var eliminations = document.getElementById("update-stats-form").elements["eliminations"].value;
+	var deaths = document.getElementById("update-stats-form").elements["deaths"].value;
+
+	// Form was not entirely filled
+	if (wins == "" || losses == "" || timeplayed == "" || eliminations == "" || deaths == "") {
+		return;
+	}
+
+	var updateStatsDict = {};
+	updateStatsDict["wins"] = parseInt(wins, 10);
+	updateStatsDict["losses"] = parseInt(losses, 10);
+	updateStatsDict["timePlayed"] = parseInt(timeplayed, 10);
+	updateStatsDict["eliminations"] = parseInt(eliminations, 10);
+	updateStatsDict["deaths"] = parseInt(deaths, 10);
+
+    combineStatsDB(hero, updateStatsDict);
+
+    var updateForm = document.getElementById("update-stats-div");
+    updateForm.remove();
+}
+
+
+// Remove all hero cards
 function removeAllCards(){
     console.log("removeAllCards");
-    //this assumes the cards are children of <body>
+    // This assumes the cards are children of <body>
     var children = document.getElementsByClassName("hero-card");
-    while(children.length > 0){
+    while (children.length > 0) {
         children[0].parentNode.removeChild(children[0]);
     }
 }

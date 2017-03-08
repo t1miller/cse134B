@@ -3,7 +3,7 @@
  */
 
 // Retrieve the user's favorite Heroes from the database and then display this 
-// data using formToTemplate
+// data using createHeroCard
 function displayFavoritesDB() {
 	var dict = {};
 	var uid = firebase.auth().currentUser.uid;
@@ -15,7 +15,7 @@ function displayFavoritesDB() {
 				dict["timePlayed"] = childSnapshot.val().timePlayed;
 				dict["eliminations"] = childSnapshot.val().eliminations;
 				dict["deaths"] = childSnapshot.val().deaths;
-				formToTemplate(dict);
+				createHeroCard(dict);
 		});
 	});
 }
@@ -34,7 +34,7 @@ function combineStatsDB(hero, updateStatsDict) {
 			    combinedStats["eliminations"] = childSnapshot.val().eliminations + updateStatsDict["eliminations"];
 			    combinedStats["deaths"] = childSnapshot.val().deaths + updateStatsDict["deaths"];
 			    updateStatsDB(hero, combinedStats);
-			    formToTemplate(combinedStats,null)
+			    createHeroCard(combinedStats,null)
 			}
 		});
 	});
@@ -54,7 +54,7 @@ function updateStatsFromDB(hero) {
 			    newStats["eliminations"] = childSnapshot.val().eliminations;
 			    newStats["deaths"] = childSnapshot.val().deaths;
 			    console.log(newStats);
-			    formToTemplate(newStats);
+			    createHeroCard(newStats);
 			}
 		});
 	});
