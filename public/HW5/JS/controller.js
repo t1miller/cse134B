@@ -34,6 +34,32 @@ function setStaticHero(staticHeroInfo, heroName) {
 function createHeroCard(formData) {
 
     var existingHeroCard = document.getElementById(formData["hero"]);
+
+    var wins = parseInt(formData["wins"], 10);
+    var losses = parseInt(formData["losses"], 10);
+    var timePlayed = parseInt(formData["timePlayed"], 10);
+    var eliminations = parseInt(formData["eliminations"], 10);
+    var deaths = parseInt(formData["deaths"], 10);
+
+    var winrate = wins / (wins+losses);
+    if (isNaN(winrate) || typeof winrate == "undefined") {
+        winrate = 0;
+    }
+    else {
+        winrate = winrate.toPrecision(3);
+    }
+    console.log(formData["hero"] + winrate);
+
+
+    var edRatio = eliminations / deaths;
+    if (isNaN(edRatio) || typeof edRatio == "undefined") {
+        edRatio = 0;
+    }
+    else {
+        edRatio = edRatio.toPrecision(3);
+    }
+    console.log(formData["hero"] + edRatio);
+
     
     if (existingHeroCard == null) {
         // Hero card div
@@ -66,20 +92,13 @@ function createHeroCard(formData) {
         var userStatsDiv = document.createElement("DIV");
         userStatsDiv.className = "user-stats";
         userStatsDiv.id = "user-stats" + formData["hero"];
-        var winrate = formData["wins"] / (formData["wins"] + formData["losses"]);
-        if (isNaN(winrate) || typeof winrate == "undefined") {
-        	winrate = 0;
-        }
-        var edRatio = formData["eliminations"] / formData["deaths"];
-        if (isNaN(edRatio) || typeof edRatio == "undefined") {
-        	edRatio = 0;
-        }
+        
         userStatsDiv.innerHTML = "<h3 class=\"title\">Stats</h3>"+
                                  "<ul class=\"list-fields\">"+
-                                    "<li><strong>Wins:</strong> "+formData["wins"]+"</li>" +
-                                    "<li><strong>Losses:</strong> "+formData["losses"]+"</li>" +
+                                    "<li><strong>Wins:</strong> "+wins+"</li>" +
+                                    "<li><strong>Losses:</strong> "+losses+"</li>" +
                                     "<li><strong>Win-rate:</strong> "+winrate+"</li>" +
-                                    "<li><strong>Time Played:</strong> "+formData["timePlayed"]+"</li>" +
+                                    "<li><strong>Time Played:</strong> "+timePlayed+"</li>" +
                                     "<li><strong>Eliminations/Death:</strong> "+edRatio+"</li>" +
                                  "</ul>" +
                                  "<form class=\"update-stats\" action=\"#\">"+
@@ -101,20 +120,13 @@ function createHeroCard(formData) {
         var userStatsDiv = document.getElementById("user-stats" + formData["hero"]);
         userStatsDiv.className = "user-stats";
         userStatsDiv.id = "user-stats" + formData["hero"];
-        var winrate = formData["wins"] / (formData["wins"] + formData["losses"]);
-        if (isNaN(winrate) || typeof winrate == "undefined") {
-        	winrate = 0;
-        }
-        var edRatio = formData["eliminations"] / formData["deaths"];
-        if (isNaN(edRatio) || typeof edRatio == "undefined") {
-        	edRatio = 0;
-        }
+        
         userStatsDiv.innerHTML = "<h3 class=\"title\">Stats</h3>"+
                                  "<ul class=\"list-fields\">"+
-                                    "<li>Wins: "+formData["wins"]+"</li>" +
-                                    "<li>Losses: "+formData["losses"]+"</li>" +
+                                    "<li>Wins: "+wins+"</li>" +
+                                    "<li>Losses: "+losses+"</li>" +
                                     "<li>Win-rate: "+winrate+"</li>" +
-                                    "<li>Time Played: "+formData["timePlayed"]+"</li>" +
+                                    "<li>Time Played: "+timePlayed+"</li>" +
                                     "<li>Eliminations/Death: "+edRatio+"</li>" +
                                  "</ul>" +
                                  "<form class=\"update-stats\" action=\"#\">"+
