@@ -20,11 +20,11 @@ function setStaticHero(staticHeroInfo, heroName) {
     var staticHeroDiv = document.getElementById("static-hero-info"+heroName);
     staticHeroDiv.innerHTML = "<h3 class=\"title\">"+heroName+"</h3>"+
 	                              "<ul class=\"list-fields\">"+
-	                                  "<li>Origin: "+staticHeroInfo["origin"]+"</li>"+
-	                                  "<li>Role: "+staticHeroInfo["role"]+"</li>"+
-	                                  "<li>Health: "+staticHeroInfo["health"]+"</li>"+
-	                                  "<li>Ultimate: "+staticHeroInfo["ultimate"]+"</li>"+
-	                                  "<li>Member of Overwatch: "+staticHeroInfo["memberOfOverwatch"]+"</li>"+
+	                                  "<li><strong>Origin: </strong>"+staticHeroInfo["origin"]+"</li>"+
+	                                  "<li><strong>Role: </strong>"+staticHeroInfo["role"]+"</li>"+
+	                                  "<li><strong>Health: </strong>"+staticHeroInfo["health"]+"</li>"+
+	                                  "<li><strong>Ultimate: </strong>"+staticHeroInfo["ultimate"]+"</li>"+
+	                                  "<li><strong>Member of Overwatch: </strong>"+staticHeroInfo["memberOfOverwatch"]+"</li>"+
 	                              "</ul>"; 
                   
 }
@@ -50,14 +50,16 @@ function createHeroCard(formData) {
         var backgroundInfoDiv = document.createElement("DIV");
         backgroundInfoDiv.className = "background-info";
         backgroundInfoDiv.id = "static-hero-info"+formData["hero"];
+        /*
         backgroundInfoDiv.innerHTML =   "<h3 class=\"title\">"+formData["hero"]+"</h3>"+
                                         "<ul class=\"list-fields\">"+
-                                            "<li>Origin:</li>"+
-                                            "<li>Role:</li>"+
-                                            "<li>Health:</li>"+
-                                            "<li>Ultimate:</li>"+
-                                            "<li>Member of Overwatch:</li>"+
+                                            "<li><strong>Origin:</strong> </li>"+
+                                            "<li><strong>Role:</strong> </li>"+
+                                            "<li><strong>Health:</strong> </li>"+
+                                            "<li><strong>Ultimate:</strong> </li>"+
+                                            "<li><strong>Member of Overwatch:</strong> </li>"+
                                         "</ul>";    
+        */
                            
 
         // User stats div
@@ -74,11 +76,11 @@ function createHeroCard(formData) {
         }
         userStatsDiv.innerHTML = "<h3 class=\"title\">Stats</h3>"+
                                  "<ul class=\"list-fields\">"+
-                                    "<li>Wins: "+formData["wins"]+"</li>" +
-                                    "<li>Losses: "+formData["losses"]+"</li>" +
-                                    "<li>Win-rate: "+winrate+"</li>" +
-                                    "<li>Time Played: "+formData["timePlayed"]+"</li>" +
-                                    "<li>Eliminations/Death: "+edRatio+"</li>" +
+                                    "<li><strong>Wins:</strong> "+formData["wins"]+"</li>" +
+                                    "<li><strong>Losses:</strong> "+formData["losses"]+"</li>" +
+                                    "<li><strong>Win-rate:</strong> "+winrate+"</li>" +
+                                    "<li><strong>Time Played:</strong> "+formData["timePlayed"]+"</li>" +
+                                    "<li><strong>Eliminations/Death:</strong> "+edRatio+"</li>" +
                                  "</ul>" +
                                  "<form class=\"update-stats\" action=\"#\">"+
                                     "<input type=\"button\" value=\"Edit\" onClick=\"createUpdateStatsForm('"+formData["hero"]+"');\">" +
