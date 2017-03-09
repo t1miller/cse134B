@@ -6,7 +6,7 @@
     "public": "public",  
     "redirects":  [{
 	  "source" : "/",
-	  "destination" : "/HW4",
+	  "destination" : "/HW5",
 	  "type" : 302	}]
   }
 
