@@ -31,15 +31,14 @@ function setStaticHero(staticHeroInfo, heroName) {
 
 
 // Takes form data and pumps out a card template
-function createHeroCard(formData) {
+function createHeroCard(userStatsDict) {
 
-    var existingHeroCard = document.getElementById(formData["hero"]);
-
-    var wins = parseInt(formData["wins"], 10);
-    var losses = parseInt(formData["losses"], 10);
-    var timePlayed = parseInt(formData["timePlayed"], 10);
-    var eliminations = parseInt(formData["eliminations"], 10);
-    var deaths = parseInt(formData["deaths"], 10);
+    var hero = userStatsDict["hero"];
+    var wins = parseInt(userStatsDict["wins"], 10);
+    var losses = parseInt(userStatsDict["losses"], 10);
+    var timePlayed = parseInt(userStatsDict["timePlayed"], 10);
+    var eliminations = parseInt(userStatsDict["eliminations"], 10);
+    var deaths = parseInt(userStatsDict["deaths"], 10);
 
     var winrate = wins / (wins+losses);
     if (isNaN(winrate) || typeof winrate == "undefined") {
@@ -48,7 +47,7 @@ function createHeroCard(formData) {
     else {
         winrate = winrate.toPrecision(3);
     }
-    console.log(formData["hero"] + winrate);
+    console.log(hero + winrate);
 
 
     var edRatio = eliminations / deaths;
@@ -58,26 +57,26 @@ function createHeroCard(formData) {
     else {
         edRatio = edRatio.toPrecision(3);
     }
-    console.log(formData["hero"] + edRatio);
+    console.log(hero + edRatio);
 
-    
+    var existingHeroCard = document.getElementById(hero);
     if (existingHeroCard == null) {
         // Hero card div
         var heroCardDiv = document.createElement("DIV");
         heroCardDiv.className = "hero-card";
-        heroCardDiv.id = formData["hero"];
+        heroCardDiv.id = userStatsDict["hero"];
 
         // Hero portrait div
         var heroPortraitDiv = document.createElement("DIV");
         heroPortraitDiv.className = "hero-portrait";
-        heroPortraitDiv.innerHTML = "<img class=\"hero-image\" src=\""+heroPortraitLookUp(formData["hero"])+"\" alt=\""+formData["hero"]+"\">"
+        heroPortraitDiv.innerHTML = "<img class=\"hero-image\" src=\""+heroPortraitLookUp(hero)+"\" alt=\""+hero+"\">"
 
         // Hero background info div
         var backgroundInfoDiv = document.createElement("DIV");
         backgroundInfoDiv.className = "background-info";
-        backgroundInfoDiv.id = "static-hero-info"+formData["hero"];
+        backgroundInfoDiv.id = "static-hero-info"+hero;
         /*
-        backgroundInfoDiv.innerHTML =   "<h3 class=\"title\">"+formData["hero"]+"</h3>"+
+        backgroundInfoDiv.innerHTML =   "<h3 class=\"title\">"+hero+"</h3>"+
                                         "<ul class=\"list-fields\">"+
                                             "<li><strong>Origin:</strong> </li>"+
                                             "<li><strong>Role:</strong> </li>"+
@@ -91,7 +90,7 @@ function createHeroCard(formData) {
         // User stats div
         var userStatsDiv = document.createElement("DIV");
         userStatsDiv.className = "user-stats";
-        userStatsDiv.id = "user-stats" + formData["hero"];
+        userStatsDiv.id = "user-stats" + hero;
         
         userStatsDiv.innerHTML = "<h3 class=\"title\">Stats</h3>"+
                                  "<ul class=\"list-fields\">"+
@@ -102,8 +101,8 @@ function createHeroCard(formData) {
                                     "<li><strong>Eliminations/Death:</strong> "+edRatio+"</li>" +
                                  "</ul>" +
                                  "<form class=\"update-stats\" action=\"#\">"+
-                                    "<input type=\"button\" value=\"Edit\" onClick=\"createUpdateStatsForm('"+formData["hero"]+"');\">" +
-                                    "<input type=\"button\" value=\"Delete\" onClick=\"deleteHero('"+formData["hero"]+"');\">" +
+                                    "<input type=\"button\" value=\"Edit\" onClick=\"createUpdateStatsForm('"+hero+"');\">" +
+                                    "<input type=\"button\" value=\"Delete\" onClick=\"deleteHero('"+hero+"');\">" +
                                  "</form>";
         
         // Append all of the Hero card div's children
@@ -113,13 +112,13 @@ function createHeroCard(formData) {
 
         // Append the Hero card to the body
         document.getElementsByTagName("MAIN")[0].appendChild(heroCardDiv);
-        getStaticHeroInfoDB(formData["hero"]);
+        getStaticHeroInfoDB(hero);
     }
     else {
         // User stats div
-        var userStatsDiv = document.getElementById("user-stats" + formData["hero"]);
+        var userStatsDiv = document.getElementById("user-stats" + hero);
         userStatsDiv.className = "user-stats";
-        userStatsDiv.id = "user-stats" + formData["hero"];
+        userStatsDiv.id = "user-stats" + hero;
         
         userStatsDiv.innerHTML = "<h3 class=\"title\">Stats</h3>"+
                                  "<ul class=\"list-fields\">"+
@@ -130,8 +129,8 @@ function createHeroCard(formData) {
                                     "<li>Eliminations/Death: "+edRatio+"</li>" +
                                  "</ul>" +
                                  "<form class=\"update-stats\" action=\"#\">"+
-                                    "<input type=\"button\" value=\"Edit\" onClick=\"createUpdateStatsForm('"+formData["hero"]+"');\">" +
-                                    "<input type=\"button\" value=\"Delete\" onClick=\"deleteHero('"+formData["hero"]+"');\">" +
+                                    "<input type=\"button\" value=\"Edit\" onClick=\"createUpdateStatsForm('"+hero+"');\">" +
+                                    "<input type=\"button\" value=\"Delete\" onClick=\"deleteHero('"+hero+"');\">" +
                                  "</form>";
 
     }
