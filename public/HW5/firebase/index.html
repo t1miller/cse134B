@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Selection</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	
+	<!--Firebase stuff-->
+	<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase-database.js"></script>
+	<!--For commmon DB operations-->
+	<script src="JS/dboperations.js"></script>	
+	<!--For DOM manipulaton-->
+	<script src="JS/controller.js"></script>	
+	
+
+	<script>	  
+	    // Initialize Firebase
+	    var config = {
+	    	apiKey: "AIzaSyDuF_qzwkeOCG9F4_I2eJTVcLxFkHnbdPQ",
+	    	authDomain: "overdex-f33ef.firebaseapp.com",
+	    	databaseURL: "https://overdex-f33ef.firebaseio.com/",
+	    	storageBucket: "gs://overdex-f33ef.appspot.com",
+	    	messagingSenderId: "<SENDER_ID>"
+	    };
+	    firebase.initializeApp(config);
+	    firebase.auth().onAuthStateChanged(function(user) {
+		    // User is not signed in
+		    if (!user) {
+		  		window.location.replace("login.html");
+		    	
+		    }
+		    else {
+		  		console.log(displayFavoritesDB());
+		    }
+	    });
+
+	</script>
+</head>
+<body>
+	<button type="button" id="logout" onclick="logout()">Logout</button>
+	<form action="#" id="addHeroForm">
+	  	<select name="hero">
+		    <option value="Ana">Ana</option>
+		    <option value="Bastion">Bastion</option>
+		    <option value="DVa">DVa</option>
+		    <option value="Genji">Genji</option>
+		    <option value="Hanzo">Hanzo</option>
+		    <option value="Junkrat">Junkrat</option>
+		    <option value="Lucio">Lucio</option>
+		    <option value="McCree">McCree</option>
+		    <option value="Mei">Mei</option>
+		    <option value="Mercy">Mercy</option>
+		    <option value="Pharah">Pharah</option>
+		    <option value="Reaper">Reaper</option>
+		    <option value="Reinhardt">Reinhardt</option>
+		    <option value="Roadhog">Roadhog</option>
+		    <option value="Soldier">Soldier</option>
+		    <option value="Symmetra">Symmetra</option>
+		    <option value="Torbjorn">Torbjorn</option>
+		    <option value="Tracer">Tracer</option>
+		    <option value="Widowmaker">Widowmaker</option>
+		    <option value="Winston">Winston</option>
+		    <option value="Zarya">Zarya</option>
+		    <option value="Zenyatta">Zenyatta</option>
+	  	</select>
+	  	<input type="button" value="+" name="addHeroButton" onclick="addHero()">
+	</form>
+
+	<script>
+		function logout() {
+			firebase.auth().signOut().then(function() {
+				window.location.replace("login.html");
+			}, function(error) {
+			 	console.log("Error logging out");
+			});
+		}
+	</script>
+</body>
+</html>
