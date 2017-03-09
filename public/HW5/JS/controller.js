@@ -91,7 +91,7 @@ function createHeroCard(formData) {
         heroCardDiv.appendChild(userStatsDiv);
 
         // Append the Hero card to the body
-        document.getElementsByTagName("BODY")[0].appendChild(heroCardDiv);
+        document.getElementsByTagName("MAIN")[0].appendChild(heroCardDiv);
         getStaticHeroInfoDB(formData["hero"]);
     }
     else {

@@ -1,12 +1,10 @@
 
 - Clean up mobile experience
 
-- Clean up JS code
-
-- Remove update dropdown after user hits submit
-
-- Allow user to change who they are currently updating
-
 - Ask user 'are you sure' before a delete
 
-- Reorganize JS files
+- Add dynamic '+' button for adding heroes and a hero selector
+
+- Run all code through the HTML validator
+
+- Consider how hero selector will work for mobile
