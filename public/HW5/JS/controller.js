@@ -18,13 +18,17 @@ function heroPortraitLookUp(heroName) {
 // dictionary
 function setStaticHero(staticHeroInfo, heroName) {
     var staticHeroDiv = document.getElementById("static-hero-info"+heroName);
+    var overwatchMember = "Yes";
+    if (!staticHeroInfo["memberOfOverwatch"]) {
+        overwatchMember = "No";
+    }
     staticHeroDiv.innerHTML = "<h3 class=\"title\">"+heroName+"</h3>"+
 	                              "<ul class=\"list-fields\">"+
 	                                  "<li><strong>Origin: </strong>"+staticHeroInfo["origin"]+"</li>"+
 	                                  "<li><strong>Role: </strong>"+staticHeroInfo["role"]+"</li>"+
 	                                  "<li><strong>Health: </strong>"+staticHeroInfo["health"]+"</li>"+
 	                                  "<li><strong>Ultimate: </strong>"+staticHeroInfo["ultimate"]+"</li>"+
-	                                  "<li><strong>Member of Overwatch: </strong>"+staticHeroInfo["memberOfOverwatch"]+"</li>"+
+	                                  "<li><strong>Overwatch Member: </strong>"+overwatchMember+"</li>"+
 	                              "</ul>"; 
                   
 }
@@ -82,7 +86,7 @@ function createHeroCard(userStatsDict) {
                                             "<li><strong>Role:</strong> </li>"+
                                             "<li><strong>Health:</strong> </li>"+
                                             "<li><strong>Ultimate:</strong> </li>"+
-                                            "<li><strong>Member of Overwatch:</strong> </li>"+
+                                            "<li><strong>Overwatch Member:</strong> </li>"+
                                         "</ul>";    
         */
                            
