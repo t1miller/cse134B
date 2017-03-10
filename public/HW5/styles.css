@@ -57,11 +57,13 @@ main {
     }
 }
 
+
 #nav {
     height: 30px;
     line-height: 30px;
     color: black;
 }
+
 
 #sort-radio {
     display: inline-block;
@@ -74,9 +76,11 @@ main {
 }
 
 @media (max-width: 500px) {
+    
     #nav {
         height: 50px;
     }
+    
     #sort-radio {
         display: inline;
         text-align: center;
@@ -232,7 +236,7 @@ strong {
     }
 }
 
-#floating-button{
+#floating-add-button {
     width: 55px;
     height: 55px;
     border-radius: 50%;
@@ -245,8 +249,7 @@ strong {
 }
 
 
-
-#plus{
+#plus {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -262,7 +265,7 @@ strong {
 }
 
 @media (max-width: 700px) {
-    #floating-button {
+    #floating-add-button {
         width: 45px;
         height: 45px;
         right: 30px;
@@ -272,4 +275,3 @@ strong {
         line-height: 45px;
     }
 }
-

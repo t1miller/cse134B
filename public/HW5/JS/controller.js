@@ -126,11 +126,11 @@ function createHeroCard(userStatsDict) {
         
         userStatsDiv.innerHTML = "<h3 class=\"title\">Stats</h3>"+
                                  "<ul class=\"list-fields\">"+
-                                    "<li>Wins: "+wins+"</li>" +
-                                    "<li>Losses: "+losses+"</li>" +
-                                    "<li>Win-rate: "+winrate+"</li>" +
-                                    "<li>Time Played: "+timePlayed+"</li>" +
-                                    "<li>Eliminations/Death: "+edRatio+"</li>" +
+                                    "<li><strong>Wins:</strong> "+wins+"</li>" +
+                                    "<li><strong>Losses:</strong> "+losses+"</li>" +
+                                    "<li><strong>Win-rate:</strong> "+winrate+"</li>" +
+                                    "<li><strong>Time Played:</strong> "+timePlayed+"</li>" +
+                                    "<li><strong>Eliminations/Death:</strong> "+edRatio+"</li>" +
                                  "</ul>" +
                                  "<form class=\"update-stats\" action=\"#\">"+
                                     "<input type=\"button\" value=\"Edit\" onClick=\"createUpdateStatsForm('"+hero+"');\">" +
