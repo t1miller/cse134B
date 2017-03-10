@@ -176,7 +176,7 @@ main {
 
 @media (max-width: 800px) {
     .hero-image {
-        height: 150px;
+        height: 170px;
         width: 150px;
     }
 }
