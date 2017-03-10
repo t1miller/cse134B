@@ -57,11 +57,13 @@ main {
     }
 }
 
+
 #nav {
     height: 30px;
     line-height: 30px;
     color: black;
 }
+
 
 #sort-radio {
     display: inline-block;
@@ -74,9 +76,11 @@ main {
 }
 
 @media (max-width: 500px) {
+    
     #nav {
         height: 50px;
     }
+    
     #sort-radio {
         display: inline;
         text-align: center;
@@ -93,12 +97,12 @@ main {
 
 .hero-card {
     text-align: center;
-    margin-top: 7px;
-    margin-bottom: 7px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
     border-radius: 10px;
-    box-shadow: 0 2px 5px black;
+    box-shadow: 2px 2px 5px black;
     background-color: #ffdc9a; /* orange */
 }
 
@@ -128,7 +132,6 @@ main {
     margin: 2px;
     border: 2px solid black;
     border-radius: 10px;
-    padding-left: 3px;
     width: 30%;
     height: 200px;
     text-align: left;
@@ -156,6 +159,7 @@ main {
 .hero-portrait {
     margin: 2px;
     border: none;
+    padding: 0;
     width: 30%;
     height: 95%;
     display: inline-block;
@@ -167,7 +171,6 @@ main {
     .hero-portrait {
         width: 100%;
     }
-
 }
 
 .hero-image {
@@ -177,7 +180,7 @@ main {
 
 @media (max-width: 800px) {
     .hero-image {
-        height: 150px;
+        height: 170px;
         width: 150px;
     }
 }
@@ -188,7 +191,6 @@ main {
         height: 40%;
         padding: 0;
         margin: 0;
-
     }
 }
 
@@ -219,7 +221,12 @@ main {
 
 .list-fields {
     list-style: none;
-    padding-left: 0;
+    padding-left: 8px;
+    /*padding-left: 0;*/
+}
+
+strong {
+    color: black;
 }
 
 @media (max-width: 500px) {
@@ -229,7 +236,7 @@ main {
     }
 }
 
-#floating-button{
+#floating-add-button {
     width: 55px;
     height: 55px;
     border-radius: 50%;
@@ -242,8 +249,7 @@ main {
 }
 
 
-
-#plus{
+#plus {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -259,7 +265,7 @@ main {
 }
 
 @media (max-width: 700px) {
-    #floating-button {
+    #floating-add-button {
         width: 45px;
         height: 45px;
         right: 30px;
@@ -269,4 +275,3 @@ main {
         line-height: 45px;
     }
 }
-
