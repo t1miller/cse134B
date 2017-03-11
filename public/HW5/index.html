@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1">
     <title>OverDex</title>
 	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="stylesheet" type="text/css" href="style/heropicker.css">
 	
 	<!-- Firebase stuff-->
 	<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase.js"></script>
@@ -36,6 +37,7 @@
 		  		console.log(displayFavoritesDB());
 		    }
 	    });
+
 	</script>
 	<script>
 		function logout() {
@@ -78,10 +80,271 @@
 		  	</select>
 		  	<input type="button" value="+" name="addHeroButton" onclick="addHero()">
 		</form>
-		
-	    <div id="floating-add-button">
+		<div id="myModal" class="modal">
+		  <div class="modal-content">
+		  	<div id="modal-header">
+		  		<span class="close">&times;</span>
+				<h2>Choose a hero</h2>
+		  	</div>
+			<div id="hero-picker-container">
+				<div class="hero-picker-img-container">
+					<img class="hero-picker-img" src="HeroPortraits/AnaPortrait.png" alt="Anna">
+					<h3 class="hero-name">Ana</h3>
+				</div>
+				<div class="hero-picker-img-container">
+					<img class="hero-picker-img" src="HeroPortraits/BastionPortrait.png" alt="Bastion">
+					<h3 class="hero-name">Bastion</h3>
+				</div>
+				<div class="hero-picker-img-container">
+					<img class="hero-picker-img" src="HeroPortraits/DVaPortrait.png" alt="DVa">
+					<h3 class="hero-name">DVa</h3>
+				</div>
+				<div class="hero-picker-img-container">
+					<img class="hero-picker-img" src="HeroPortraits/GenjiPortrait.png" alt="Genji">
+					<h3 class="hero-name">Genji</h3>
+				</div>
+				<div class="hero-picker-img-container">
+					<img class="hero-picker-img" src="HeroPortraits/HanzoPortrait.png" alt="Hanzo">
+					<h3 class="hero-name">Hanzo</h3>
+				</div>
+				<div class="hero-picker-img-container">
+					<img class="hero-picker-img" src="HeroPortraits/JunkratPortrait.png" alt="Junkrat">
+					<h3 class="hero-name">Junkrat</h3>
+				</div>
+				<div class="hero-picker-img-container">
+					<img class="hero-picker-img" src="HeroPortraits/LucioPortrait.png" alt="Lucio">
+					<h3 class="hero-name">Lucio</h3>
+				</div>
+				<div class="hero-picker-img-container">
+					<img class="hero-picker-img" src="HeroPortraits/McCreePortrait.png" alt="McCree">
+					<h3 class="hero-name">McCree</h3>
+				</div>
+				<div class="hero-picker-img-container">
+					<img class="hero-picker-img" src="HeroPortraits/MeiPortrait.png" alt="Mei">
+					<h3 class="hero-name">Mei</h3>
+				</div>
+				<div class="hero-picker-img-container">
+					<img class="hero-picker-img" src="HeroPortraits/MercyPortrait.png" alt="Mercy">
+					<h3 class="hero-name">Mercy</h3>
+				</div>
+				<div class="hero-picker-img-container">
+					<img class="hero-picker-img" src="HeroPortraits/PharahPortrait.png" alt="Pharah">
+					<h3 class="hero-name">Pharah</h3>
+				</div>
+				<div class="hero-picker-img-container">
+					<img class="hero-picker-img" src="HeroPortraits/ReaperPortrait.png" alt="Reaper">
+					<h3 class="hero-name">Reaper</h3>
+				</div>
+				<div class="hero-picker-img-container">
+					<img class="hero-picker-img" src="HeroPortraits/ReinhardtPortrait.png" alt="Reinhardt">
+					<h3 class="hero-name">Reinhardt</h3>
+				</div>
+				<div class="hero-picker-img-container">
+					<img class="hero-picker-img" src="HeroPortraits/RoadhogPortrait.png" alt="Roadhog">
+					<h3 class="hero-name">Roadhog</h3>
+				</div>
+				<div class="hero-picker-img-container">
+					<img class="hero-picker-img" src="HeroPortraits/SoldierPortrait.png" alt="Soldier">
+					<h3 class="hero-name">Soldier</h3>
+				</div>
+				<div class="hero-picker-img-container">
+					<img class="hero-picker-img" src="HeroPortraits/SymmetraPortrait.png" alt="Symmetra">
+					<h3 class="hero-name">Symmetra</h3>
+				</div>
+				<div class="hero-picker-img-container">
+					<img class="hero-picker-img" src="HeroPortraits/TorbjornPortrait.png" alt="Torbjorn">
+					<h3 class="hero-name">Torbjorn</h3>
+				</div>
+				<div class="hero-picker-img-container">
+					<img class="hero-picker-img" src="HeroPortraits/TracerPortrait.png" alt="Tracer">
+					<h3 class="hero-name">Tracer</h3>
+				</div>
+				<div class="hero-picker-img-container">
+					<img class="hero-picker-img" src="HeroPortraits/WidowmakerPortrait.png" alt="Widow">
+					<h3 class="hero-name">Widow</h3>
+				</div>
+				<div class="hero-picker-img-container">
+					<img class="hero-picker-img" src="HeroPortraits/WinstonPortrait.png" alt="Winston">
+					<h3 class="hero-name">Winston</h3>
+				</div>
+				<div class="hero-picker-img-container">
+					<img class="hero-picker-img" src="HeroPortraits/ZaryaPortrait.png" alt="Zarya">
+					<h3 class="hero-name">Zarya</h3>
+				</div>
+				<div class="hero-picker-img-container">
+					<img class="hero-picker-img" src="HeroPortraits/ZenyattaPortrait.png" alt="Zenyatta">
+					<h3 class="hero-name">Zenyatta</h3>
+				</div>
+		 <!-- <table>
+			            <tr>
+			                <td onclick="alert(window.document);">
+		                        <img class="hero-picker-img" src="HeroPortraits/AnaPortrait.png" alt="Anna">
+		                        <h3>Anna</h3>
+			                </td>
+			                <td onclick="alert(window.document);">
+		                        <img src="HeroPortraits/BastionPortrait.png" alt="Bastion">
+		                        <h3>Bastion</h3>
+			                </td>
+			                <td onclick="alert(window.document);">
+		                        <img src="HeroPortraits/DVaPortrait.png" alt="DVa">
+		                        <h3>DVa</h3>
+			                </td>
+			                <td>
+		                        <img src="HeroPortraits/GenjiPortrait.png" alt="Genji">
+		                        <h3>Genji</h3>
+			                </td>
+			                <td>
+		                        <img src="HeroPortraits/ZaryaPortrait.png" alt="Zarya">
+		                        <h3>Zarya</h3>
+			                </td>
+			                
+			            </tr>
+			            <tr>
+			                <td>
+			                    <a href="index.html">
+			                        <img src="HeroPortraits/HanzoPortrait.png" alt="Hanzo">
+			                        <h3>Hanzo</h3>
+			                    </a>
+			                </td>
+			                <td>
+			                    <a href="index.html">
+			                        <img src="HeroPortraits/JunkratPortrait.png" alt="Junkrat">
+			                        <h3>Junkrat</h3>
+			                    </a>
+			                </td>
+			                <td>
+			                    <a href="index.html">
+			                        <img src="HeroPortraits/LucioPortrait.png" alt="Lucio">
+			                        <h3>Lucio</h3>
+			                    </a>
+			                </td>
+			                <td>
+			                    <a href="index.html">
+			                        <img src="HeroPortraits/MccreePortrait.png" alt="McCree">
+			                        <h3>McCree</h3>
+			                    </a>
+			                </td>
+			                <td>
+			                    <a href="index.html">
+			                        <img src="HeroPortraits/ZenyattaPortrait.png" alt="Zenyatta">
+			                        <h3>Zenyatta</h3>
+			                    </a>
+			                </td>
+			            </tr>   
+			            <tr>
+			                <td>
+			                    <a href="index.html">
+			                        <img src="HeroPortraits/MeiPortrait.png" alt="Mei">
+			                        <h3>Mei</h3>
+			                    </a>
+			                </td>
+			                <td>
+			                    <a href="index.html">
+			                        <img src="HeroPortraits/MercyPortrait.png" alt="Mercy">
+			                        <h3>Mercy</h3>
+			                    </a>
+			                </td>
+			                <td>
+			                    <a href="index.html">
+			                        <img src="HeroPortraits/PharahPortrait.png" alt="Pharah">
+			                        <h3>Pharah</h3>
+			                    </a>
+			                </td>
+			                <td>
+			                    <a href="index.html">
+			                        <img src="HeroPortraits/ReaperPortrait.png" alt="Reaper">
+			                        <h3>Reaper</h3>
+			                    </a>
+			                </td>
+			                <td>
+			                    <a href="index.html">
+			                        <img src="HeroPortraits/WinstonPortrait.png" alt="Winston">
+			                        <h3>Winston</h3>
+			                    <a>
+			                </td>
+			            </tr> 
+			            <tr>
+			                <td>
+			                    <a href="index.html">
+			                        <img src="HeroPortraits/ReinhardtPortrait.png" alt="Reinhardt">
+			                        <h3>Reinhardt</h3>
+			                    </a>
+			                </td>
+			                <td>
+			                    <a href="index.html">
+			                        <img src="HeroPortraits/RoadhogPortrait.png" alt="Roadhog">
+			                        <h3>Roadhog</h3>
+			                    </a>
+			                </td>
+			                <td>
+			                    <a href="index.html">
+			                        <img src="HeroPortraits/SoldierPortrait.png" alt="Soldier">
+			                        <h3>Soldier</h3>
+			                    </a>
+			                </td>
+			                <td>
+			                    <a href="index.html">
+			                        <img src="HeroPortraits/SymmetraPortrait.png" alt="Symmetra">
+			                        <h3>Symmetra</h3>
+			                    </a>
+			                </td>
+			                <td>
+			                    <a href="index.html">
+			                        <img src="HeroPortraits/WidowmakerPortait.png" alt="Widowmaker">
+			                        <h3>Widow</h3>
+			                    </a>
+			                </td>
+
+			            </tr>    
+			            <tr>
+			                <td>
+			                    <a href="index.html">
+			                        <img src="HeroPortraits/TorbjornPortrait.png" alt="Torbjorn">
+			                        <h3>Torbjorn</h3>
+			                    </a>
+			                </td>
+			                <td>
+			                    <a href="index.html">
+			                        <img src="HeroPortraits/TracerPortrait.png" alt="Tracer">
+			                        <h3>Tracer</h3>
+			                    </a>
+			                </td>
+			            </tr>         
+			        </table> 
+			        <p>Please select hero to add.</br>This page will be implemented on the main index.html page using JS for a better user experience.</p>-->
+			    </div>
+		  </div>
+		</div>
+	    <div id="floating-add-button" onclick="showModal();">
         	<p id="plus">+</p>
         </div>
 	</main>
 </body>
+<!-- Modal functions-->
+<script>
+	function showModal(){
+		document.getElementById('myModal').style.display = "block";
+		document.getElementsByTagName('body')[0].style.overflow = "hidden";
+	}
+
+</script>
+<!-- Modal stuff w3schools.com -->
+<script>
+var modal = document.getElementById('myModal');
+var body = document.getElementsByTagName('body')[0];
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+    body.style.overflow = "hidden";
+}
+</script>
+
 </html>
