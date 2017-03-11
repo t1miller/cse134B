@@ -105,13 +105,15 @@ main {
     background-color: #ffdc9a; /* orange */
 }
 
+/*
 @media (max-width: 800px) {
     .hero-card {
-        height: 180px;
+        height: 190px;
     }
 }
+*/
 
-@media(max-width: 500px) {
+@media (max-width: 500px) {
     .hero-card {
         height: 100%;
         width: 80%;
@@ -132,7 +134,7 @@ main {
     border: 2px solid black;
     border-radius: 10px;
     width: 30%;
-    height: 200px;
+    height: 220px;
     text-align: left;
     display: inline-block;
     vertical-align: middle;
@@ -140,17 +142,27 @@ main {
 
 @media (max-width: 800px) {
     .hero-card > * {
-        height: 160px;
+        height: 180px;
     }
 }
 
 @media (max-width: 500px) {
     .hero-card > * {
-        padding: 2px;
+        padding: 2px 20px;
         margin-left: auto;
         margin-right: auto;
+        margin-top: 3px;
+        margin-bottom: 3px;
         width: 60%;
+        height: 200px;
         display: block;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 350px) {
+    .hero-card > * {
+        width: 75%;
         font-size: 15px;
     }
 }
@@ -196,7 +208,7 @@ main {
 .title {
     text-align: center;
     margin-top: 1px;
-    margin-bottom: 1px;
+    margin-bottom: 15px;
     font-size: 40px;
     color: black;
     font-family: 'BigNoodleToo', Arial;
@@ -211,6 +223,7 @@ main {
 @media (max-width: 500px) {
     .title {
         padding-bottom: 1px;
+        margin-bottom: 10px
     }
 }
 
@@ -218,10 +231,69 @@ main {
     text-align: center;
 }
 
+@media(max-width: 500px) {
+    .update-stats {
+        margin-top: 30px;
+    }
+}
+
+@media(max-width: 350px) {
+    .update-stats {
+        margin-top: 20px;
+    }
+}
+
+
 .list-fields {
     list-style: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
     padding-left: 8px;
     /*padding-left: 0;*/
+}
+
+@media (max-width: 500px) {
+    .list-fields {
+        margin-bottom: 5px;
+    }
+}
+
+#update-stats-form {
+    text-align: center;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.update-stats-row {
+    margin-top: 3px;
+    margin-bottom: 3px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    text-align: left;
+}
+
+.update-stats-box {
+    width: 45%;
+    float: right;
+    text-align: right;
+}
+
+.update-stats-input {
+    width: 85%;
+}
+
+#submit-update-button {
+    margin-top: 12px;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .update-stats-box {
+        width: 40%;
+    }
+
+    .update-stats-input {
+    }
 }
 
 strong {
