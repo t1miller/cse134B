@@ -274,13 +274,13 @@ main {
 }
 
 .update-stats-box {
-    width: 120px;
+    width: 45%;
     float: right;
     text-align: right;
 }
 
 .update-stats-input {
-    width: 100px;
+    width: 85%;
 }
 
 #submit-update-button {
@@ -288,68 +288,14 @@ main {
     text-align: center;
 }
 
-@media (max-width: 900px) {
-    .update-stats-box {
-        width: 90px;
-    }
-
-    .update-stats-input {
-        width: 80px;
-    }
-}
-
-@media (max-width: 800px) {
-    .update-stats-box {
-        width: 70px;
-    }
-
-    .update-stats-input {
-        width: 60px;
-    }
-}
-
 @media (max-width: 600px) {
     .update-stats-box {
-        width: 60px;
+        width: 40%;
     }
 
     .update-stats-input {
-        width: 50px;
     }
 }
-
-
-@media (max-width: 550px) {
-    .update-stats-box {
-        width: 52px;
-    }
-
-    .update-stats-input {
-        width: 48px;
-    }
-}
-
-@media (max-width: 500px) {
-    .update-stats-box {
-        width: 90px;
-    }
-
-    .update-stats-input {
-        width: 80px;
-    }
-}
-
-@media (max-width: 500px) {
-    .update-stats-box {
-        width: 80px;
-    }
-
-    .update-stats-input {
-        width: 70px;
-    }
-}
-
-
 
 strong {
     color: black;
