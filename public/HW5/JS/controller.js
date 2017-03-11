@@ -106,7 +106,7 @@ function createHeroCard(userStatsDict) {
                                  "</ul>" +
                                  "<form class=\"update-stats\" action=\"#\">"+
                                     "<input type=\"button\" value=\"Update\" onClick=\"createUpdateStatsForm('"+hero+"');\">" +
-                                    "<input type=\"button\" value=\"Delete\" onClick=\"deleteHero('"+hero+"');\">" +
+                                    "<input type=\"button\" value=\"Delete\" onClick=\"deleteHeroHandler('"+hero+"');\">" +
                                  "</form>";
         
         // Append all of the Hero card div's children
@@ -134,7 +134,7 @@ function createHeroCard(userStatsDict) {
                                  "</ul>" +
                                  "<form class=\"update-stats\" action=\"#\">"+
                                     "<input type=\"button\" value=\"Update\" onClick=\"createUpdateStatsForm('"+hero+"');\">" +
-                                    "<input type=\"button\" value=\"Delete\" onClick=\"deleteHero('"+hero+"');\">" +
+                                    "<input type=\"button\" value=\"Delete\" onClick=\"deleteHeroHandler('"+hero+"');\">" +
                                  "</form>";
 
     }
@@ -238,6 +238,14 @@ function updateStatsHandler(hero) {
 
     var updateForm = document.getElementById("update-stats-div");
     updateForm.remove();
+}
+
+
+// Display a dialog to confirm that the user wants to delete the hero
+function deleteHeroHandler(hero) {
+    if (window.confirm("Are you sure you want to delete " + hero + "? All personal stats on this hero will be lost forever.")) { 
+        deleteHero(hero);
+    }
 }
 
 
