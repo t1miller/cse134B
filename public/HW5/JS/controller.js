@@ -124,8 +124,8 @@ function createHeroCard(userStatsDict) {
         userStatsDiv.className = "user-stats";
         userStatsDiv.id = "user-stats" + hero;
         
-        userStatsDiv.innerHTML = "<h3 class=\"title\">Stats</h3>"+
-                                 "<ul class=\"list-fields\">"+
+        userStatsDiv.innerHTML = "<h3 class=\"title\">Stats</h3>" +
+                                 "<ul class=\"list-fields\">" +
                                     "<li><strong>Wins:</strong> "+wins+"</li>" +
                                     "<li><strong>Losses:</strong> "+losses+"</li>" +
                                     "<li><strong>Win-rate:</strong> "+winrate+"</li>" +
@@ -179,19 +179,36 @@ function createUpdateStatsForm(hero) {
 
     var updateStatsForm = document.createElement("DIV");
     updateStatsForm.id = "update-stats-div"
-    updateStatsForm.innerHTML = "<form id=\"update-stats-form\" action=\"#\">"+
-                                    "Games Won:"+
-                                    "<input type=\"text\" name=\"gameswon\"><br>"+
-                                    "Games Lost:"+
-                                    "<input type=\"text\" name=\"gameslost\"><br>"+
-                                    "Time Played:"+
-                                    "<input type=\"text\" name=\"timeplayed\"><br>"+
-                                    "Eliminations:"+
-                                    "<input type=\"text\" name=\"eliminations\"><br>"+
-                                    "Deaths:"+
-                                    "<input type=\"text\" name=\"deaths\"><br>"+
-                                    "<input type=\"button\" value=\"submit-update\" onClick=\"updateStatsHandler('"+hero+"')\">"+
+    updateStatsForm.innerHTML = "<h3 class=\"title\">Update</h3>"+
+                                "<form id=\"update-stats-form\" action=\"#\">"+
+                                    "<div class=\"update-stats-row\">"+
+                                        "<strong>Games Won: </strong>"+                       
+                                        "<div class=\"update-stats-box\"><input type=\"text\" class=\"update-stats-input\" name=\"gameswon\"></div>"+  
+                                    "</div>"+
+
+                                    "<div class=\"update-stats-row\">"+
+                                        "<strong>Games Lost: </strong>"+                                    
+                                        "<div class=\"update-stats-box\"><input type=\"text\" class=\"update-stats-input\" name=\"gameslost\"></div>"+
+                                    "</div>"+
+
+                                    "<div class=\"update-stats-row\">"+
+                                        "<strong>Time Played: </strong>"+
+                                        "<div class=\"update-stats-box\"><input type=\"text\" class=\"update-stats-input\" name=\"timeplayed\"></div>"+
+                                    "</div>"+
+
+                                    "<div class=\"update-stats-row\">"+
+                                        "<strong>Eliminations: </strong>"+
+                                        "<div class=\"update-stats-box\"><input type=\"text\" class=\"update-stats-input\" name=\"eliminations\"></div>"+
+                                    "</div>"+
+
+                                    "<div class=\"update-stats-row\">"+
+                                        "<strong>Deaths: </strong>"+
+                                        "<div class=\"update-stats-box\"><input type=\"text\" class=\"update-stats-input\" name=\"deaths\"></div>"+
+                                    "</div>"+
+
+                                    "<input id=\"submit-update-button\" type=\"button\" value=\"Submit Update\" onClick=\"updateStatsHandler('"+hero+"')\"></div>"+
                                 "</form>";
+
     document.getElementById(hero).appendChild(updateStatsForm);
 }
 
