@@ -265,3 +265,5 @@ function removeAllCards(){
         children[0].parentNode.removeChild(children[0]);
     }
 }
+
+
