@@ -105,7 +105,7 @@ function createHeroCard(userStatsDict) {
                                     "<li><strong>Eliminations/Death:</strong> "+edRatio+"</li>" +
                                  "</ul>" +
                                  "<form class=\"update-stats\" action=\"#\">"+
-                                    "<input type=\"button\" value=\"Edit\" onClick=\"createUpdateStatsForm('"+hero+"');\">" +
+                                    "<input type=\"button\" value=\"Update\" onClick=\"createUpdateStatsForm('"+hero+"');\">" +
                                     "<input type=\"button\" value=\"Delete\" onClick=\"deleteHero('"+hero+"');\">" +
                                  "</form>";
         
@@ -133,7 +133,7 @@ function createHeroCard(userStatsDict) {
                                     "<li><strong>Eliminations/Death:</strong> "+edRatio+"</li>" +
                                  "</ul>" +
                                  "<form class=\"update-stats\" action=\"#\">"+
-                                    "<input type=\"button\" value=\"Edit\" onClick=\"createUpdateStatsForm('"+hero+"');\">" +
+                                    "<input type=\"button\" value=\"Update\" onClick=\"createUpdateStatsForm('"+hero+"');\">" +
                                     "<input type=\"button\" value=\"Delete\" onClick=\"deleteHero('"+hero+"');\">" +
                                  "</form>";
 

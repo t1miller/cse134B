@@ -106,13 +106,15 @@ main {
     background-color: #ffdc9a; /* orange */
 }
 
+/*
 @media (max-width: 800px) {
     .hero-card {
-        height: 180px;
+        height: 190px;
     }
 }
+*/
 
-@media(max-width: 500px) {
+@media (max-width: 500px) {
     .hero-card {
         height: 100%;
         width: 80%;
@@ -133,7 +135,7 @@ main {
     border: 2px solid black;
     border-radius: 10px;
     width: 30%;
-    height: 200px;
+    height: 220px;
     text-align: left;
     display: inline-block;
     vertical-align: middle;
@@ -141,17 +143,27 @@ main {
 
 @media (max-width: 800px) {
     .hero-card > * {
-        height: 160px;
+        height: 180px;
     }
 }
 
 @media (max-width: 500px) {
     .hero-card > * {
-        padding: 2px;
+        padding: 2px 20px;
         margin-left: auto;
         margin-right: auto;
+        margin-top: 3px;
+        margin-bottom: 3px;
         width: 60%;
+        height: 200px;
         display: block;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 350px) {
+    .hero-card > * {
+        width: 75%;
         font-size: 15px;
     }
 }
@@ -212,12 +224,26 @@ main {
 @media (max-width: 500px) {
     .title {
         padding-bottom: 1px;
+        margin-bottom: 10px
     }
 }
 
 .update-stats {
     text-align: center;
 }
+
+@media(max-width: 500px) {
+    .update-stats {
+        margin-top: 30px;
+    }
+}
+
+@media(max-width: 350px) {
+    .update-stats {
+        margin-top: 20px;
+    }
+}
+
 
 .list-fields {
     list-style: none;
@@ -227,31 +253,100 @@ main {
     /*padding-left: 0;*/
 }
 
+@media (max-width: 500px) {
+    .list-fields {
+        margin-bottom: 5px;
+    }
+}
+
 #update-stats-form {
     text-align: center;
     padding-left: 8px;
+    padding-right: 8px;
 }
 
 .update-stats-row {
-    margin-top: 2px;
-    margin-bottom: 2px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    padding-top: 1px;
+    padding-bottom: 1px;
     text-align: left;
 }
 
 .update-stats-box {
-    width: 100px;
+    width: 120px;
     float: right;
     text-align: right;
 }
 
 .update-stats-input {
-    width: 50px;
-    margin-right: 8px;
+    width: 100px;
 }
 
 #submit-update-button {
-    margin-top: 15px;
+    margin-top: 12px;
     text-align: center;
+}
+
+@media (max-width: 900px) {
+    .update-stats-box {
+        width: 90px;
+    }
+
+    .update-stats-input {
+        width: 80px;
+    }
+}
+
+@media (max-width: 800px) {
+    .update-stats-box {
+        width: 70px;
+    }
+
+    .update-stats-input {
+        width: 60px;
+    }
+}
+
+@media (max-width: 600px) {
+    .update-stats-box {
+        width: 60px;
+    }
+
+    .update-stats-input {
+        width: 50px;
+    }
+}
+
+
+@media (max-width: 550px) {
+    .update-stats-box {
+        width: 52px;
+    }
+
+    .update-stats-input {
+        width: 48px;
+    }
+}
+
+@media (max-width: 500px) {
+    .update-stats-box {
+        width: 90px;
+    }
+
+    .update-stats-input {
+        width: 80px;
+    }
+}
+
+@media (max-width: 500px) {
+    .update-stats-box {
+        width: 80px;
+    }
+
+    .update-stats-input {
+        width: 70px;
+    }
 }
 
 
