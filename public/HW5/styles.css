@@ -8,7 +8,8 @@ body {
     margin-top: 0;
     margin-bottom: 0;
     font-family: Arial, helvetica, sans-serif;
-    background-color: #a3c6ff; /* light blue */
+    /*background-color: #a3c6ff; /* light blue */
+    background-color: #00BCD4;
     color: #565353; /* dark grey */
 }
 
@@ -100,7 +101,7 @@ main {
     margin-bottom: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
-    border-radius: 10px;
+    border-radius: 6px;
     box-shadow: 2px 2px 5px black;
     background-color: #ffdc9a; /* orange */
 }
