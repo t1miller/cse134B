@@ -214,8 +214,11 @@ function createUpdateStatsForm(hero) {
                                         "<div class=\"update-stats-box\"><input type=\"text\" class=\"update-stats-input\" name=\"deaths\"></div>"+
                                     "</div>"+
 
-                                    "<input id=\"submit-update-button\" type=\"button\" value=\"Submit Update\" onClick=\"updateStatsHandler('"+hero+"')\"></div>"+
-                                "</form>";
+                                    "<div id=\"submit-update-button\" class=\"material-button\" onClick=\"updateStatsHandler('"+hero+"')\">" +
+                                        "<p class=\"material-button-text\">Submit</p>"+
+                                     "</div>" +
+                                 "</form>";
+
 
     document.getElementById(hero).appendChild(updateStatsForm);
 }
