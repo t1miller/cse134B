@@ -143,25 +143,15 @@ function createHeroCard(userStatsDict) {
 
 
 // Add a hero to the favorites list
-function addHero() {
-	var dict = {};
-	dict["hero"] = document.getElementById("addHeroForm").elements["hero"].value;
-	dict["wins"] = 0;
-	dict["losses"] = 0;
-	dict["timePlayed"] = 0;
-	dict["eliminations"] = 0;
-	dict["deaths"] = 0;
-
-	// Make sure the user has selected a Hero
-	if(dict["hero"] == "") {
-		alert("Please select a hero");
-		return;
-	}
-
+function addHero(hero) {
+    var dict = {};
+    dict["hero"] = hero;
 	// Only add the Hero if it is not already favorited
-	if(document.getElementById(dict["hero"]) == null){
+	if(document.getElementById(hero) == null){
 		addHeroDB(dict["hero"]);
 		createHeroCard(dict);
+        document.getElementById('myModal').style.display = "none";
+        body.style.overflow = "visible";
 	}
 	else {
 		alert("Hero already exists.");
