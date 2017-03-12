@@ -154,6 +154,12 @@ function createHeroCard(userStatsDict) {
 function addHero(hero) {
     var dict = {};
     dict["hero"] = hero;
+    dict["wins"] = 0;
+    dict["losses"] = 0;
+    dict["timePlayed"] = 0;
+    dict["eliminations"] = 0;
+    dict["deaths"] = 0;
+    
 	// Only add the Hero if it is not already favorited
 	if(document.getElementById(hero) == null){
 		addHeroDB(dict["hero"]);
