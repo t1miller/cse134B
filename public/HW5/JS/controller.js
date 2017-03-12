@@ -112,14 +112,6 @@ function createHeroCard(userStatsDict) {
                                         "<p class=\"material-button-text\">Delete</p>"+
                                      "</div>" +
                                  "</div>";
-
-
-                                 /*
-                                 "<form class=\"update-stats\" action=\"#\">"+
-                                    "<input type=\"button\" value=\"Update\" onClick=\"createUpdateStatsForm('"+hero+"');\">" +
-                                    "<input type=\"button\" value=\"Delete\" onClick=\"deleteHeroHandler('"+hero+"');\">" +
-                                 "</form>";
-                                 */
         
         // Append all of the Hero card div's children
         heroCardDiv.appendChild(heroPortraitDiv);
@@ -144,10 +136,14 @@ function createHeroCard(userStatsDict) {
                                     "<li><strong>Time Played:</strong> "+timePlayed+"</li>" +
                                     "<li><strong>Eliminations/Death:</strong> "+edRatio+"</li>" +
                                  "</ul>" +
-                                 "<form class=\"update-stats\" action=\"#\">"+
-                                    "<input type=\"button\" value=\"Update\" onClick=\"createUpdateStatsForm('"+hero+"');\">" +
-                                    "<input type=\"button\" value=\"Delete\" onClick=\"deleteHeroHandler('"+hero+"');\">" +
-                                 "</form>";
+                                  "<div class=\"update-stats\">" +
+                                     "<div class=\"material-button update-button\" onClick=\"createUpdateStatsForm('"+hero+"');\">" +
+                                        "<p class=\"material-button-text\">Update</p>"+
+                                     "</div>" +
+                                     "<div class=\"material-button delete-button\" onClick=\"deleteHeroHandler('"+hero+"');\">" +
+                                        "<p class=\"material-button-text\">Delete</p>"+
+                                     "</div>" +
+                                 "</div>";
 
     }
     
