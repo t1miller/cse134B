@@ -102,7 +102,9 @@ main {
     padding-top: 10px;
     padding-bottom: 10px;
     border-radius: 6px;
-    box-shadow: 2px 2px 5px black;
+
+    /*box-shadow: 2px 2px 5px black;*/
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
     background-color: #ffdc9a; /* orange */
 }
 
@@ -229,6 +231,7 @@ main {
 }
 
 .update-stats {
+    margin-top: 30px;
     text-align: center;
 }
 
@@ -242,6 +245,30 @@ main {
     .update-stats {
         margin-top: 20px;
     }
+}
+
+.material-button {
+    border-radius: 2px;
+    box-shadow: 0px 2px 5px #666;
+    width: 35%;
+    background-color: #03A9F4;
+    text-align: center;
+    display: inline-block;
+}
+
+.material-button-text {
+    padding: 5px 0;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    color: white;
+}
+
+.update-button {
+    margin-right: 10px;
+}
+
+.delete-button {
+    margin-left: 10px;
 }
 
 
