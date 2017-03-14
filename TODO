@@ -5,9 +5,12 @@
 
 - Stylize picker
 
-- Stylize logout button
-
-- Change hero add to prepend
-
 - Consider sorting
 
+- Minify code
+
+- Documentation for app and code, including screen captures and demo link
+
+- Document the architecture of the code, the organization of files and most 
+importantly any concerns, limitations, caveats or TODOs that may still be in 
+place upon turn-in
