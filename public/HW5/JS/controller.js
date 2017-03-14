@@ -118,8 +118,10 @@ function createHeroCard(userStatsDict) {
         heroCardDiv.appendChild(backgroundInfoDiv);
         heroCardDiv.appendChild(userStatsDiv);
 
-        // Append the Hero card to the body
-        document.getElementsByTagName("MAIN")[0].appendChild(heroCardDiv);
+        // Prepend the Hero card to main
+        var main = document.getElementsByTagName("MAIN")[0];
+        main.insertBefore(heroCardDiv,main.firstChild)
+
         getStaticHeroInfoDB(hero);
     }
     else {
