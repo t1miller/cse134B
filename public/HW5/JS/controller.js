@@ -51,8 +51,6 @@ function createHeroCard(userStatsDict) {
     else {
         winrate = winrate.toPrecision(3);
     }
-    console.log(hero + winrate);
-
 
     var edRatio = eliminations / deaths;
     if (isNaN(edRatio) || typeof edRatio == "undefined") {
@@ -159,7 +157,7 @@ function addHero(hero) {
     dict["timePlayed"] = 0;
     dict["eliminations"] = 0;
     dict["deaths"] = 0;
-    
+
 	// Only add the Hero if it is not already favorited
 	if(document.getElementById(hero) == null){
 		addHeroDB(dict["hero"]);

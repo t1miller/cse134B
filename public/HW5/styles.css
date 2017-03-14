@@ -70,13 +70,7 @@ main {
     float: left;
 }
 
-#logout-btn {
-    display: inline-block;
-    float: right;
-}
-
 @media (max-width: 500px) {
-    
     #nav {
         height: 50px;
     }
@@ -88,11 +82,6 @@ main {
         margin: auto;
     }
 
-    #logout-btn {
-        display: inline;
-        float: none;
-        margin: auto;
-    }
 }
 
 .hero-card {
@@ -250,7 +239,6 @@ main {
 .material-button {
     border-radius: 2px;
     box-shadow: 0px 2px 5px #666;
-    width: 35%;
     background-color: #03A9F4;
     text-align: center;
     display: inline-block;
@@ -265,12 +253,18 @@ main {
 
 .update-button {
     margin-right: 10px;
+    width: 35%;
 }
 
 .delete-button {
     margin-left: 10px;
+    width: 35%;
+    float: right;
 }
 
+#logout-button {
+    width: 10%;
+}
 
 .list-fields {
     list-style: none;
