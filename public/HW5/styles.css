@@ -64,24 +64,32 @@ main {
     color: black;
 }
 
-
-#sort-radio {
+#sort-heroes-dropdown {
     display: inline-block;
     float: left;
+}
+
+#logout-button {
+    width: 10%;
+    line-height: 15px;
+    display: inline-block;
+    float: right;
+    background-color: white;
+}
+
+#logout-text {
+    padding: 10px 0;
+    color: black;
 }
 
 @media (max-width: 500px) {
     #nav {
         height: 50px;
     }
-    
-    #sort-radio {
-        display: inline;
-        text-align: center;
-        float: none;
-        margin: auto;
-    }
 
+    #logout-button {
+        width: 20%;
+    }
 }
 
 .hero-card {
@@ -259,11 +267,6 @@ main {
 .delete-button {
     margin-left: 10px;
     width: 35%;
-    float: right;
-}
-
-#logout-button {
-    width: 10%;
 }
 
 .list-fields {

@@ -52,9 +52,21 @@
 <body>
 	<main>
         <img id="OverDexBanner" src="Overwatch-Banner.png" alt="OverDex Banner">
-        <div class="material-button" id="logout-button" onClick="logout()">
-            <p class="material-button-text">Logout</p>
-        </div>
+        <nav id="nav">
+            <form action="#" id="sort-heroes-dropdown">
+            <select name="sort">
+                <option value="alphabetical">Alphabetical</option>
+                <option value="wins">Wins</option>
+                <option value="winrate">Winrate</option>
+                <option value="timePlayed">Time Played</option>
+                <option value="eliminations">Eliminations</option>
+                <option value="elimsPerDeath">Eliminations per Death</option>
+            </select>
+            </form>
+            <div id="logout-button" class="material-button" onClick="logout()">
+                <p id="logout-text" class="material-button-text">Logout</p>
+            </div>
+        </nav>
 		<!--<button type="button" id="logout" class="material-button" onclick="logout()">Logout</button>-->
 		<div id="myModal" class="modal">
 		  <div class="modal-content">
