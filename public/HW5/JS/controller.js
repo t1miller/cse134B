@@ -273,4 +273,15 @@ function removeAllCards(){
     }
 }
 
+def sort(){
+    var sortSelector = document.getElementById("sort-selector");
+    var sortType = sortSelector.options[sortSelector.selectedIndex].text;
+
+    if (sortType == "alphabetical"){
+
+    }else if (sortType == "winrate"){
+        
+    }
+}
+
 
