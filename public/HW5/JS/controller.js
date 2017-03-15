@@ -98,7 +98,7 @@ function createHeroCard(userStatsDict) {
                                  "<ul class=\"list-fields\">"+
                                     "<li><strong>Wins:</strong> "+wins+"</li>" +
                                     "<li><strong>Losses:</strong> "+losses+"</li>" +
-                                    "<li><strong>Win-rate:</strong> "+winrate+"</li>" +
+                                    "<li><strong>Win-rate:</strong> <var class=\"win-rate-var\">"+winrate+"<var></li>" +
                                     "<li><strong>Time Played:</strong> "+timePlayed+"</li>" +
                                     "<li><strong>Eliminations/Death:</strong> "+edRatio+"</li>" +
                                  "</ul>" +
@@ -130,9 +130,10 @@ function createHeroCard(userStatsDict) {
         
         userStatsDiv.innerHTML = "<h3 class=\"title\">Stats</h3>" +
                                  "<ul class=\"list-fields\">" +
+
                                     "<li><strong>Wins:</strong> "+wins+"</li>" +
                                     "<li><strong>Losses:</strong> "+losses+"</li>" +
-                                    "<li><strong>Win-rate:</strong> "+winrate+"</li>" +
+                                    "<li id=\"win-rate\" ><strong>Win-rate:</strong> <var class=\"win-rate-var\">"+winrate+"<var></li>" +
                                     "<li><strong>Time Played:</strong> "+timePlayed+"</li>" +
                                     "<li><strong>Eliminations/Death:</strong> "+edRatio+"</li>" +
                                  "</ul>" +
@@ -265,22 +266,69 @@ function deleteHero(hero) {
 
 // Remove all hero cards
 function removeAllCards(){
-    console.log("removeAllCards");
     // This assumes the cards are children of <body>
     var children = document.getElementsByClassName("hero-card");
     while (children.length > 0) {
         children[0].parentNode.removeChild(children[0]);
     }
 }
+        
+function sortAtoZ(){
+    //get all children
+    var cards = document.getElementsByClassName("hero-card");
+    var main = document.getElementsByTagName("MAIN")[0];
+    
+    heroName = [];
+    cardCopy = [];//store a copy of cards
 
-def sort(){
+    for(var i = 0; i < cards.length; i++){
+        heroName.push(cards[i].id+"_"+i);
+        cardCopy[i] = cards[i]
+    }
+
+    heroName.sort();
+    removeAllCards();
+
+    for(var i = 0; i < cardCopy.length; i++){
+        index = heroName[i].split("_")[1]
+        main.appendChild(cardCopy[index]);
+    }
+
+}
+
+function sortWinRate(){
+    var cards = document.getElementsByClassName("hero-card");
+    var main = document.getElementsByTagName("MAIN")[0];
+    
+    winRate = [];
+    cardCopy = [];//store a copy of cards
+    var winRateVar = document.getElementsByClassName("win-rate-var");
+    for(var i = 0; i < cards.length; i++){
+        winRate.push(winRateVar[i].textContent+"_"+i);
+        cardCopy[i] = cards[i];
+    }
+
+    //sort decreasing order
+    winRate.sort(function(a, b) {
+      var num1 = a.split("_")[0];
+      var num2 = b.split("_")[0];
+      return num2 - num1;
+    });
+    removeAllCards();
+    for(var i = 0; i < cardCopy.length; i++){
+        index = winRate[i].split("_")[1]
+        main.appendChild(cardCopy[index]);
+    }
+}
+
+function sort(){
     var sortSelector = document.getElementById("sort-selector");
-    var sortType = sortSelector.options[sortSelector.selectedIndex].text;
+    var sortType = sortSelector.options[sortSelector.selectedIndex].value;
 
     if (sortType == "alphabetical"){
-
+        sortAtoZ();
     }else if (sortType == "winrate"){
-        
+        sortWinRate();
     }
 }
 
