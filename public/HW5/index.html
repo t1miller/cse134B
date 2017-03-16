@@ -4,20 +4,22 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
     <title>OverDex</title>
-	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="stylesheet" type="text/css" href="style/styles.css">
 	<link rel="stylesheet" type="text/css" href="style/heropicker.css">
-	
+	<link rel="manifest" href="manifest.json">
+
 	<!-- Firebase stuff-->
 	<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase-app.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase-auth.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase-database.js"></script>
 	<!-- Commmon DB operations-->
-	<script src="JS/dboperations.js"></script>	
+	<script src="MinJS/dboperations.js"></script>	
 	<!-- DOM manipulaton-->
-	<script src="JS/controller.js"></script>	
-	
-	<!-- Initialize Firebase -->
+	<script src="MinJS/controller.js"></script>	
+	<meta name="theme-color" content="#00BCD4">
+
+	<!-- Initialize Firebase and ServiceWorker-->
 	<script>	  
 	    var config = {
 	    	apiKey: "AIzaSyDuF_qzwkeOCG9F4_I2eJTVcLxFkHnbdPQ",
@@ -30,16 +32,26 @@
 	    firebase.auth().onAuthStateChanged(function(user) {
 		    // User is not signed in
 		    if (!user) {
-		  		window.location.replace("login.html");
-		    	
+		  		window.location.replace("login.html");	    	
 		    }
 		    else {
 		  		console.log(displayFavoritesDB());
 		    }
 	    });
 
-	</script>
-	<script>
+	    //initialize service worker
+		if ('serviceWorker' in navigator) {
+		  window.addEventListener('load', function() {
+		    navigator.serviceWorker.register('sw.js').then(function(registration) {
+		      // Registration was successful
+		      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+		    }).catch(function(err) {
+		      // registration failed :(
+		      console.log('ServiceWorker registration failed: ', err);
+		    });
+		  });
+		}
+
 		function logout() {
 			firebase.auth().signOut().then(function() {
 				window.location.replace("login.html");
@@ -48,18 +60,22 @@
 			});
 		}
 	</script>
+
+  <!-- Add to home screen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="OverDex PWA">
+  <link rel="apple-touch-icon" href="icons/icon-152x152.png">
+
 </head>
 <body>
 	<img id="OverDexBanner" src="Overwatch-Banner.png" alt="OverDex Banner">
     <nav id="nav">
         <form action="#" id="sort-heroes-dropdown">
         <select id="sort-selector" onchange="sort();">
+        	<option disabled selected value> -- Choose a sort option -- </option>
             <option value="alphabetical">Alphabetical</option>
-            <option value="wins">Wins</option>
             <option value="winrate">Winrate</option>
-            <option value="timePlayed">Time Played</option>
-            <option value="eliminations">Eliminations</option>
-            <option value="elimsPerDeath">Eliminations per Death</option>
         </select>
         </form>
         <div id="logout-button" class="material-button" onClick="logout()">

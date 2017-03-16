@@ -7,39 +7,12 @@
 	<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase-app.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase-auth.js"></script>
-	<script>
-	  // Initialize Firebase
-	  // TODO: Replace with your project's customized code snippet
-	  var config = {
-	    apiKey: "AIzaSyDuF_qzwkeOCG9F4_I2eJTVcLxFkHnbdPQ",
-	    authDomain: "overdex-f33ef.firebaseapp.com",
-	    databaseURL: "https://overdex-f33ef.firebaseio.com/",
-	    storageBucket: "gs://overdex-f33ef.appspot.com",
-	    messagingSenderId: "<SENDER_ID>"
-	  };
-	  firebase.initializeApp(config);
-	</script>
 	<script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
 	<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" />
-	<script type="text/javascript">
-      // FirebaseUI config.
-      var uiConfig = {
-        signInSuccessUrl: "index.html",
-        signInOptions: [
-          // Leave the lines as is for the providers you want to offer your users.
-          firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-          firebase.auth.EmailAuthProvider.PROVIDER_ID
-        ],
-        // Terms of service url.
-        tosUrl: '<your-tos-url>'
-      };
-
-      // Initialize the FirebaseUI Widget using Firebase.
-      var ui = new firebaseui.auth.AuthUI(firebase.auth());
-      // The start method will wait until the DOM is loaded.
-      ui.start('#firebaseui-auth-container', uiConfig);
-    </script>
     <link rel="stylesheet" type="text/css" href="style/login.css">
+	<link rel="manifest" href="manifest.json">
+	<meta name="theme-color" content="#00BCD4">
+
 
 </head>
 <body>
@@ -47,4 +20,45 @@
 	<h1>OverDex Login</h1>
     <div id="firebaseui-auth-container"></div>
 </body>
+<script type="text/javascript">
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDuF_qzwkeOCG9F4_I2eJTVcLxFkHnbdPQ",
+    authDomain: "overdex-f33ef.firebaseapp.com",
+    databaseURL: "https://overdex-f33ef.firebaseio.com/",
+    storageBucket: "gs://overdex-f33ef.appspot.com",
+    messagingSenderId: "<SENDER_ID>"
+  };
+  firebase.initializeApp(config);
+
+  // FirebaseUI config.
+  var uiConfig = {
+    signInSuccessUrl: "index.html",
+    signInOptions: [
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+      firebase.auth.EmailAuthProvider.PROVIDER_ID
+    ],
+    tosUrl: '<your-tos-url>'
+  };
+
+  // Initialize the FirebaseUI Widget using Firebase.
+  var ui = new firebaseui.auth.AuthUI(firebase.auth());
+  // The start method will wait until the DOM is loaded.
+  ui.start('#firebaseui-auth-container', uiConfig);
+
+	    //initialize service worker
+	if ('serviceWorker' in navigator) {
+	  window.addEventListener('load', function() {
+	    navigator.serviceWorker.register('sw.js').then(function(registration) {
+	      // Registration was successful
+	      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+	    }).catch(function(err) {
+	      // registration failed :(
+	      console.log('ServiceWorker registration failed: ', err);
+	    });
+	  });
+	}
+  
+
+</script>
 </html>

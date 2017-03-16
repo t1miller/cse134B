@@ -59,7 +59,6 @@ function createHeroCard(userStatsDict) {
     else {
         edRatio = edRatio.toPrecision(3);
     }
-    console.log(hero + edRatio);
 
     var existingHeroCard = document.getElementById(hero);
     if (existingHeroCard == null) {
@@ -319,6 +318,10 @@ function sortWinRate(){
         index = winRate[i].split("_")[1]
         main.appendChild(cardCopy[index]);
     }
+}
+
+function sortWins(){
+    
 }
 
 function sort(){

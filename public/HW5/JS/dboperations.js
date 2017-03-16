@@ -15,6 +15,7 @@ function displayFavoritesDB() {
 				dict["timePlayed"] = childSnapshot.val().timePlayed;
 				dict["eliminations"] = childSnapshot.val().eliminations;
 				dict["deaths"] = childSnapshot.val().deaths;
+				console.log("creating card for " + dict["hero"]);
 				createHeroCard(dict);
 		});
 	});
