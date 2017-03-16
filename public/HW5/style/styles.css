@@ -13,6 +13,14 @@ body {
     color: #565353; /* dark grey */
 }
 
+header {
+    margin: auto;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 800px;
+    text-align: center;
+}
+
 main {
     display: block;
     margin: auto;
@@ -28,10 +36,19 @@ main {
     main {
         width: 700px;
     }
+
+    header {
+        width: 700px;
+    }
 }
 
 @media (max-width: 800px) {
     main {
+        font-size: 12px;
+        width: 600px;
+    }
+
+    header {
         font-size: 12px;
         width: 600px;
     }
@@ -41,6 +58,12 @@ main {
     main {
         padding: 0;
         display: inline;
+    }
+
+    header {
+        width: 100%;
+        margin: 0;
+        padding: 0;
     }
 }
 
@@ -53,9 +76,9 @@ main {
     #OverDexBanner {
         margin: 0;
         padding: 0;
-        width: 100%;
     }
 }
+
 
 
 #nav {

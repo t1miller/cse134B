@@ -69,19 +69,21 @@
 
 </head>
 <body>
-	<img id="OverDexBanner" src="Overwatch-Banner.png" alt="OverDex Banner">
-    <nav id="nav">
-        <form action="#" id="sort-heroes-dropdown">
-        <select id="sort-selector" onchange="sort();">
-        	<option disabled selected value> -- Choose a sort option -- </option>
-            <option value="alphabetical">Alphabetical</option>
-            <option value="winrate">Winrate</option>
-        </select>
-        </form>
-        <div id="logout-button" class="material-button" onClick="logout()">
-            <p id="logout-text" class="material-button-text">Logout</p>
-        </div>
-    </nav>
+	<header>
+		<img id="OverDexBanner" src="Overwatch-Banner.png" alt="OverDex Banner">
+	    <nav id="nav">
+	        <form action="#" id="sort-heroes-dropdown">
+	        <select id="sort-selector" onchange="sort();">
+	        	<option disabled selected value> -- Choose a sort option -- </option>
+	            <option value="alphabetical">Alphabetical</option>
+	            <option value="winrate">Winrate</option>
+	        </select>
+	        </form>
+	        <div id="logout-button" class="material-button" onClick="logout()">
+	            <p id="logout-text" class="material-button-text">Logout</p>
+	        </div>
+	    </nav>
+	</header>
 	<main>
 		<div id="myModal" class="modal">
 		  <div class="modal-content">
