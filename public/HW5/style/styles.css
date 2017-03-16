@@ -79,8 +79,6 @@ main {
     }
 }
 
-
-
 #nav {
     height: 30px;
     line-height: 30px;
@@ -90,6 +88,10 @@ main {
 #sort-heroes-dropdown {
     display: inline-block;
     float: left;
+}
+
+.win-rate-var {
+    font-style: normal;
 }
 
 #logout-button {
