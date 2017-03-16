@@ -76,6 +76,13 @@
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
 
+.hero-picker-img-container:hover,
+.hero-picker-img-container:focus {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
 .hero-picker-img {
     width: 100px;
     /*height: 100px;*/
