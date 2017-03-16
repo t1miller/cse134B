@@ -17,7 +17,7 @@
 
 /* Modal Content */
 .modal-content {
-    background-color: #fefefe;
+    background-color: #00BCD4;
     margin: auto;
     padding: 0 20px 20px 20px;
     border: 1px solid #888;
@@ -27,13 +27,22 @@
     box-sizing: border-box;
 }
 
+@media(max-width: 450px) {
+    .modal-content {
+        width: 90%;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
 #myModal{
     overflow: hidden;
 }
 
 /* The Close Button */
 .close {
-    color: #aaaaaa;
+    /*color: #aaaaaa;*/
+    color: #808080;
     float: right;
     font-size: 38px;
     font-weight: bold;
@@ -46,6 +55,12 @@
     cursor: pointer;
 }
 
+#hero-picker-title {
+    font-family: 'BigNoodleToo', Helvetica, Arial;
+    font-size: 35px;
+    color: black;
+}
+
 #hero-picker-container{
     height: 100%;
     width: 100%;
@@ -54,18 +69,27 @@
 
 .hero-picker-img-container{
     display: inline-block;
+    background-color: #ffdc9a;
+    border-radius: 6px;
+    padding: 10px;
+    margin: 10px; 
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
 
 .hero-picker-img {
     width: 100px;
-    height: 100px;
+    /*height: 100px;*/
+    height: 114px;
     display: inline-block;
 }
 
 .hero-name{
     text-align: center;
     padding: 0;
-    margin: 0 0 30px 0;
+    margin: 10px 0 10px 0;
+    font-family: 'BigNoodleToo', Helvetica, Arial;
+    font-size: 25px;
+    color: black;
 }
 
 
@@ -81,11 +105,15 @@
     margin: 0 auto;
 }
 
-@media(min-width: 400px) {
+
+@media(max-width: 400px) {
     .hero-picker-img-container{
-        margin: 10px; 
+        margin: 5px; 
+        padding: 5px;
     }
 }
+
+
 
 
 

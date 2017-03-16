@@ -1,5 +1,6 @@
 @font-face {
     font-family: 'BigNoodleToo';
+    font-size: 25px;
     src: url(bignoodletoo.ttf);
 }
 
@@ -236,7 +237,7 @@ main {
     margin-bottom: 15px;
     font-size: 40px;
     color: black;
-    font-family: 'BigNoodleToo', Arial;
+    font-family: 'BigNoodleToo', Helvetica, Arial;
 }
 
 @media (max-width: 800px) {
